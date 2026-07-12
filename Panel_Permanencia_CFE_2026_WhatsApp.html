@@ -31,14 +31,15 @@
 <style>
 :root{--negro:#111;--blanco:#fff;--gris:#1d1d1f;--gris2:#2a2a2e;--verde:#2ecc71;--amarillo:#f1c40f;--rojo:#e74c3c;--azul:#3498db;--txt:#eaeaea;--mut:#9a9aa0;}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif;}
-body{background:var(--negro);color:var(--txt);padding-bottom:60px;overflow-x:hidden;}
+body{background:var(--negro);color:var(--txt);padding-bottom:60px;}
 header{background:linear-gradient(135deg,#000 0%,#222 60%,#000);border-bottom:4px solid var(--blanco);padding:28px 24px;text-align:center;}
 header h1{font-size:1.7rem;letter-spacing:1px;}
 header h1 span{color:var(--amarillo);}
 header p{color:var(--mut);margin-top:6px;font-size:.92rem;}
 .badge{display:inline-block;background:var(--rojo);color:#fff;padding:3px 12px;border-radius:20px;font-size:.8rem;font-weight:700;margin-top:10px;}
+.badge.up{background:#1e8449;}
 .container{max-width:1100px;margin:0 auto;padding:20px;}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:18px 0;}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0;}
 .kpi{background:var(--gris);border:1px solid #333;border-radius:12px;padding:16px;text-align:center;}
 .kpi .v{font-size:1.9rem;font-weight:800;}
 .kpi .l{font-size:.78rem;color:var(--mut);margin-top:4px;text-transform:uppercase;letter-spacing:.5px;}
@@ -69,39 +70,6 @@ tr.peligro td{color:#ffd54f;}
 .esc-prob{font-size:2.2rem;font-weight:800;}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 @media(max-width:760px){.grid2{grid-template-columns:1fr;}}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
-img,canvas,svg{max-width:100%;}
-@media(max-width:480px){
-header{padding:20px 14px;}
-header h1{font-size:1.25rem;letter-spacing:.5px;}
-header p{font-size:.8rem;}
-.badge{font-size:.72rem;padding:3px 10px;}
-.container{padding:12px;}
-.kpi{padding:12px 8px;}
-.kpi .v{font-size:1.5rem;}
-.kpi .l{font-size:.68rem;}
-h2{font-size:1.05rem;margin:22px 0 10px;}
-.card{padding:12px;}
-table{font-size:.76rem;}
-th{font-size:.62rem;padding:6px 3px;}
-td{padding:6px 3px;}
-.tag{font-size:.64rem;padding:2px 6px;}
-.tab{min-width:130px;padding:10px;}
-.tab h3{font-size:.88rem;}
-.tab p{font-size:.68rem;}
-.esc-prob{font-size:1.7rem;}
-.chart-box{height:220px;}
-.fixture-row{font-size:.78rem;gap:6px;}
-.fx-rival{min-width:100px;}
-.sim-btn{width:26px;height:26px;font-size:.72rem;}
-.sim-result{padding:10px 8px;gap:4px;}
-.sim-result .num{font-size:1.15rem;}
-.sim-result .lbl{font-size:.6rem;}
-.veredicto{font-size:.76rem;padding:3px 10px;}
-}
-@media(max-width:340px){
-.kpis{grid-template-columns:repeat(2,1fr);}
-}
 .fixture-row{display:flex;align-items:center;gap:10px;padding:6px 4px;border-bottom:1px solid #2c2c30;font-size:.85rem;flex-wrap:wrap;}
 .fx-fecha{width:38px;color:var(--mut);font-size:.75rem;}
 .fx-rival{flex:1;min-width:130px;}
@@ -129,93 +97,96 @@ ul.claves{list-style:none;}
 ul.claves li{padding:6px 0 6px 22px;position:relative;font-size:.88rem;border-bottom:1px solid #2c2c30;}
 ul.claves li:before{content:"›";position:absolute;left:6px;color:var(--amarillo);font-weight:800;}
 .nota{background:rgba(52,152,219,.1);border:1px solid rgba(52,152,219,.4);border-radius:10px;padding:12px;font-size:.83rem;margin-top:10px;}
+.destacado{background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.4);border-radius:10px;padding:12px;font-size:.88rem;margin:14px 0;}
 </style>
 </head>
 <body>
 <header>
 <h1>CHACO <span>FOR EVER</span> — OPERATIVO PERMANENCIA 2026</h1>
-<p>Primera Nacional · Zona A · Datos confirmados a la Fecha 19 (6 de julio de 2026) · Proyecto Forever 2031</p>
-<span class="badge">HOY: 18° — ZONA DE DESCENSO DIRECTO</span>
+<p>Primera Nacional · Zona A · Datos confirmados a la Fecha 20 (12 de julio de 2026) · Proyecto Forever 2031</p>
+<span class="badge">HOY: 18° — ZONA DE DESCENSO</span>
+<span class="badge up">FECHA 20: SAN TELMO 1-3 FOR EVER ✔ PRIMER TRIUNFO DE VISITANTE</span>
 </header>
 <div class="container">
 
+<div class="destacado"><b>Lo que cambió en la fecha 20:</b> For Ever ganó 3-1 en la Isla Maciel (Romero x2 y Gaggi) — su primer triunfo de visitante en el torneo — y TODOS los rivales directos perdieron: Mitre 0-3 con Estudiantes, y Acassuso, Central Norte y San Telmo también cayeron. La brecha con la salvación pasó de 6 puntos a <b>3</b>, y con Mitre (17°) de 5 a <b>2</b>. Semana redonda: el escenario medio pasó a ser alcanzable y el óptimo dejó de ser una quimera.</div>
+
 <div class="kpis">
-<div class="kpi rojo"><div class="v">13</div><div class="l">Puntos (19 PJ)</div></div>
-<div class="kpi amar"><div class="v">6</div><div class="l">Pts a la salvación</div></div>
-<div class="kpi azul"><div class="v">17</div><div class="l">Fechas restantes</div></div>
-<div class="kpi verde"><div class="v">51</div><div class="l">Puntos en juego</div></div>
+<div class="kpi amar"><div class="v">16</div><div class="l">Puntos (20 PJ)</div></div>
+<div class="kpi verde"><div class="v">3</div><div class="l">Pts a la salvación</div></div>
+<div class="kpi azul"><div class="v">16</div><div class="l">Fechas restantes</div></div>
+<div class="kpi verde"><div class="v">48</div><div class="l">Puntos en juego</div></div>
 <div class="kpi amar"><div class="v">34-36</div><div class="l">Línea de corte proyectada</div></div>
 </div>
 
-<h2>Tabla Zona A — Fecha 19</h2>
+<h2>Tabla Zona A — Fecha 20</h2>
 <div class="card" style="overflow-x:auto;">
 <table id="tablaZonaA"><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DIF</th><th>PTS</th><th>Estado</th></tr></thead><tbody></tbody></table>
-<p class="fuente">Descienden los DOS últimos de cada zona en forma directa (sin promedios, sin promoción). Fuentes: Goal.com, ESPN, La Nación — fecha 19.</p>
+<p class="fuente">Descienden los DOS últimos de cada zona en forma directa (sin promedios, sin promoción). Fuentes: Fichajes.com (tabla completa F20), Sport Chaco, Diario Primera Línea, Mundo Ascenso — 11-12/7/2026.</p>
 </div>
 
 <h2>La pelea de abajo: rendimiento Local vs Visitante</h2>
 <div class="grid2">
 <div class="card"><div class="chart-box"><canvas id="chartLV"></canvas></div>
-<p class="fuente">For Ever: único del grupo sin triunfos de visitante (0G-3E-6P, 3 goles en 9 salidas).</p></div>
+<p class="fuente">For Ever rompió la racha: primer triunfo de visitante (ahora 1G-3E-6P afuera, 6 pts). Mitre sigue sin ganar afuera.</p></div>
 <div class="card">
 <ul class="claves">
-<li><b>Mitre (17°, 18 pts):</b> rival directo. 3° DT del año (Biaggio). Tampoco ganó de visitante (0-7-3).</li>
-<li><b>Acassuso (16°, 19 pts):</b> recién ascendido, 10 derrotas. Cambió DT (Kohan). Frágil de visitante.</li>
-<li><b>Central Norte (15°, 19 pts):</b> en alza con Sciacqua: 2 triunfos recientes. El que se está escapando.</li>
-<li><b>All Boys (14°, 20 pts):</b> empatador serial; se reforzó fuerte (5 altas, incl. G. Ramírez ex-CFE).</li>
-<li><b>Racing (C) (12°, 21 pts):</b> caída libre, 3° DT (Coleoni), baja de Centurión. Puede ser absorbido.</li>
-<li><b>Colón (3°, 32 pts):</b> arriba, pero con fragilidad económica (2 inhibiciones FIFA en 2025-26).</li>
+<li><b>Mitre (17°, 18 pts):</b> rival directo, a solo 2 pts. Perdió 0-3 con Estudiantes en el debut de Biaggio. 1 victoria en sus últimas 9. En caída libre.</li>
+<li><b>Acassuso (16°, 19 pts):</b> perdió de nuevo (11 derrotas, la más del grupo). El 1-1 de Resistencia hoy vale oro.</li>
+<li><b>Central Norte (15°, 19 pts):</b> goleado 0-4 en la fecha 20. La levantada de Sciacqua se frenó en seco.</li>
+<li><b>San Telmo (14°, 20 pts):</b> cayó como local ante For Ever: golpe directo en el duelo cara a cara.</li>
+<li><b>All Boys (13°, 21 pts):</b> empató de nuevo (9 empates); se aleja despacio pero sigue a tiro.</li>
+<li><b>Racing (C) (11°, 24 pts):</b> ganó y respira con Coleoni; hoy está prácticamente afuera de la pelea.</li>
 </ul></div>
 </div>
 
-<h2>Los 3 escenarios</h2>
+<h2>Los 3 escenarios (recalculados post F20)</h2>
 <div class="tabs">
-<div class="tab optimo active" onclick="setEsc('optimo',this)"><h3>🟢 ÓPTIMO</h3><p>Salvación holgada · 38-40 pts</p></div>
-<div class="tab medio" onclick="setEsc('medio',this)"><h3>🟡 MEDIO</h3><p>Salvación con lo justo · 35-36 pts</p></div>
-<div class="tab malo" onclick="setEsc('malo',this)"><h3>🔴 MALO</h3><p>Descenso · ≤30 pts</p></div>
+<div class="tab optimo active" onclick="setEsc('optimo',this)"><h3>🟢 ÓPTIMO</h3><p>Salvación holgada · 38-40 pts · ~84%</p></div>
+<div class="tab medio" onclick="setEsc('medio',this)"><h3>🟡 MEDIO</h3><p>Salvación con lo justo · 35-36 pts · ~59%</p></div>
+<div class="tab malo" onclick="setEsc('malo',this)"><h3>🔴 MALO</h3><p>Descenso · ≤30 pts · si se corta la reacción</p></div>
 </div>
 
 <div id="esc-optimo" class="esc-panel active"><div class="card">
 <div class="esc-head"><span class="esc-prob" style="color:var(--verde)">38-40 pts</span>
-<div><b>El efecto Cravero pleno: For Ever se salva con 2-3 fechas de anticipación.</b><br>
-<span style="color:var(--mut);font-size:.85rem">Requiere sumar 25-27 pts en 17 fechas (~1,5 por partido, ritmo de puestos de Reducido)</span></div></div>
+<div><b>La reacción se consolida: For Ever se salva con 2-3 fechas de anticipación.</b><br>
+<span style="color:var(--mut);font-size:.85rem">Requiere sumar 24 pts en 16 fechas (1,5 por partido). Prob. de salvarse si se sostiene ese nivel: ~84% (antes 67%)</span></div></div>
 <ul class="claves">
-<li><b>La cuenta:</b> 8 triunfos y 1-3 empates. Fórmula: fortaleza total en Resistencia (7 de los 8 partidos de local ganados = 21 pts) + 4-6 pts de visitante.</li>
-<li><b>Partidos que se ganan sí o sí:</b> los 4 duelos directos — San Telmo (V, F20), All Boys (V, F27), Mitre (V, F29) y Central Norte (L, F34) — valen doble: suman y restan al rival.</li>
-<li><b>Hito de control:</b> llegar a la fecha 27 (fin de agosto) con 24-26 pts y afuera del puesto 18.</li>
-<li><b>Se rompe la peor racha:</b> ganar al menos 2 de visitante (San Telmo y All Boys son las salidas más accesibles del calendario).</li>
-<li><b>Resultado:</b> 16° o mejor, salvación matemática entre las fechas 33 y 34, y el club planifica el 2027 en la categoría con el Proyecto 2031 intacto.</li>
+<li><b>La cuenta:</b> 7 triunfos + 3 empates. Fórmula: ganar 5-6 de los 8 de local + repetir 2 veces más lo de la Isla Maciel afuera.</li>
+<li><b>Los 3 duelos directos restantes se ganan:</b> All Boys (V, F27), Mitre (V, F29) y Central Norte (L, F34). El de San Telmo ya se ganó.</li>
+<li><b>Hito inmediato:</b> San Miguel de local (F21, 20/7): ganar y alcanzar la línea de Acassuso/Central Norte esa misma semana.</li>
+<li><b>Hito de control:</b> fecha 27 (fin de agosto) con 27-29 pts y afuera de los dos últimos puestos.</li>
+<li><b>Resultado:</b> 14°-16°, salvación matemática hacia las fechas 33-34, y el 2027 se planifica en la categoría.</li>
 </ul></div></div>
 
 <div id="esc-medio" class="esc-panel"><div class="card">
 <div class="esc-head"><span class="esc-prob" style="color:var(--amarillo)">35-36 pts</span>
 <div><b>Salvación en la última fecha, por 1-2 puntos.</b><br>
-<span style="color:var(--mut);font-size:.85rem">Requiere sumar 22-23 pts en 17 fechas (~1,3 por partido)</span></div></div>
+<span style="color:var(--mut);font-size:.85rem">Requiere sumar 20 pts en 16 fechas (1,25 por partido). Prob. si se sostiene ese nivel: ~59% (antes 36%)</span></div></div>
 <ul class="claves">
-<li><b>La cuenta:</b> 7 triunfos y 1-2 empates. Local: 5-6 victorias (16-18 pts). Visitante: 1-2 triunfos + empates (5-6 pts).</li>
-<li><b>Duelos directos:</b> se ganan los 2 de local o cortes directos (Central Norte F34) y al menos se empatan los de visitante (Mitre F29 no se puede perder).</li>
-<li><b>El torneo llega apretado:</b> 3-4 equipos separados por 2 pts en las últimas 3 fechas. El cierre es Ferro (V, F35) y Racing (C) (L, F36): la salvación se define en Resistencia la última fecha.</li>
-<li><b>Riesgo del art. 111:</b> con igualdad de puntos en puesto de descenso hay partido desempate, no diferencia de gol. Cada punto vale una final.</li>
-<li><b>Hito de control:</b> fecha 27 con 21-23 pts y a ≤3 pts del 16°.</li>
-<li><b>Resultado:</b> 16°-17° peleando hasta el final; permanencia el 31/10 con el estadio lleno. Desgaste alto, pero la categoría se conserva.</li>
+<li><b>La cuenta:</b> 6 triunfos + 2 empates. Local: 5 victorias (15-17 pts). Visitante: 1 triunfo más + empates (3-5 pts).</li>
+<li><b>Duelos directos:</b> Central Norte de local (F34) se gana; Mitre de visitante (F29) no se pierde.</li>
+<li><b>El cierre es bravo:</b> Ferro (V, F35) y Racing (L, F36). Todo indica definición en Resistencia el 31/10.</li>
+<li><b>Riesgo del art. 111:</b> ante igualdad de puntos hay desempate en cancha neutral, no diferencia de gol. Cada punto es una final.</li>
+<li><b>Hito de control:</b> fecha 27 con 23-25 pts y a 2 o menos del 16°.</li>
 </ul></div></div>
 
 <div id="esc-malo" class="esc-panel"><div class="card">
 <div class="esc-head"><span class="esc-prob" style="color:var(--rojo)">≤30 pts</span>
-<div><b>La tendencia actual no se corrige: descenso al Federal A.</b><br>
-<span style="color:var(--mut);font-size:.85rem">Sumando al ritmo actual (0,68 por partido) For Ever termina con ~25 pts; incluso mejorando a 1,0 no alcanza</span></div></div>
+<div><b>La reacción de la fecha 20 queda como un espejismo: descenso al Federal A.</b><br>
+<span style="color:var(--mut);font-size:.85rem">Si el equipo vuelve al ritmo previo (0,7-0,8 por partido) termina con 27-29 pts y la probabilidad de salvarse cae del 30% a menos del 15%</span></div></div>
 <ul class="claves">
-<li><b>La señal temprana:</b> no ganar 2 de los primeros 4 (San Telmo V, San Miguel L, Colón V, Morón L). Si en la fecha 23 sigue a 6+ pts, la probabilidad de salvarse cae por debajo del 10%.</li>
-<li><b>El patrón que condena:</b> se mantiene el 0 de visitante (nadie se salvó en la categoría sin sumar afuera) y se pierden los duelos directos, que dan vida a Mitre/Acassuso.</li>
-<li><b>Confirmación matemática estimada:</b> entre las fechas 33 y 35 (mediados-fines de octubre).</li>
-<li><b>Consecuencia institucional:</b> descenso al Federal A (afiliación indirecta), caída de ingresos por TV y sponsors, éxodo de jugadores; el Proyecto 2031 se replantea desde una categoría menor.</li>
-<li><b>Plan de contingencia:</b> blindar contratos con cláusulas por categoría, asegurar sponsors plurianuales no atados a la divisional, y capitalizar la masa societaria para un ascenso inmediato (el club ya lo hizo en 2021 con Cravero).</li>
+<li><b>La señal temprana:</b> no ganarle a San Miguel de local (F21) y llegar a la fecha 24 sin haber descontado más. Si en la fecha 27 la brecha volvió a 5+, activar contingencia.</li>
+<li><b>El patrón que condena:</b> que el 3-1 a San Telmo quede como el único triunfo de visitante y se pierdan los duelos con Mitre y Central Norte.</li>
+<li><b>Confirmación matemática estimada:</b> fechas 33-35 (octubre).</li>
+<li><b>Plan de contingencia:</b> blindar contratos con cláusulas por categoría, sponsors plurianuales no atados a la divisional, sostener masa societaria y preparar el ascenso inmediato (Federal A 2021: el club ya lo hizo, con Cravero).</li>
+<li><b>El descenso NO cancela el Proyecto 2031:</b> lo convierte en un plan de 2 etapas.</li>
 </ul></div></div>
 
 <div class="card"><div class="chart-box"><canvas id="chartProy"></canvas></div>
-<p class="fuente">Proyección de puntos por fecha en cada escenario vs. línea de corte proyectada (34-36 pts). Modelo Monte Carlo (20.000 simulaciones) calibrado con rendimiento local/visitante real y cortes históricos 2023-2025 (33-38 pts).</p></div>
+<p class="fuente">Proyección de puntos por fecha vs. línea de corte (34-36 pts). Modelo Monte Carlo (20.000 simulaciones) recalculado tras la fecha 20 con el fixture real y rendimiento local/visitante actualizado.</p></div>
 
-<h2>Fixture restante — Simulador interactivo</h2>
+<h2>Fixture restante — Simulador interactivo (16 fechas)</h2>
 <div class="card">
 <p style="font-size:.85rem;color:var(--mut);margin-bottom:10px;">Tocá G (ganado), E (empate) o P (perdido) en cada partido y mirá abajo si alcanza. Botones rápidos:
 <button class="sim-btn" style="width:auto;padding:0 10px" onclick="preset('optimo')">Óptimo</button>
@@ -225,36 +196,36 @@ ul.claves li:before{content:"›";position:absolute;left:6px;color:var(--amarill
 <div id="fixture"></div>
 </div>
 
-<div class="nota"><b>Metodología y fuentes.</b> Datos deportivos y estadísticos confirmados a la fecha 19 (Goal.com, ESPN, La Nación, DeporTV, prensa chaqueña). Reglamento: Boletín AFA 6823 (descienden los 2 últimos de cada zona, directo; desempate por partido según art. 111). Línea de corte proyectada con simulación Monte Carlo y calibrada con las líneas históricas: 2024 (30-33 pts/38 fechas), 2025 Zona A (Almagro se salvó con 35/34; Alvarado descendió con 34). Los escenarios son proyecciones, no predicciones: el objetivo es saber cómo actuar en cada uno.</div>
+<div class="nota"><b>Metodología y fuentes.</b> Tabla y resultados a la fecha 20: Fichajes.com (tabla completa, 20 PJ), Sport Chaco / Diario Primera Línea / Mundo Ascenso (San Telmo 1-3 For Ever, 11/7), Fichajes.com calendario Mitre (Estudiantes 3-0 Mitre). Reglamento: Boletín AFA 6823 (descienden los 2 últimos de cada zona; desempate por partido, art. 111). Línea de corte calibrada con históricos 2023-2025 (33-38 pts). Los escenarios son proyecciones para decidir cómo actuar, no predicciones.</div>
 </div>
 
 <div class="sim-result">
-<div style="text-align:center"><div class="num" id="rPts">13</div><div class="lbl">Pts proyectados</div></div>
+<div style="text-align:center"><div class="num" id="rPts">16</div><div class="lbl">Pts proyectados</div></div>
 <div style="text-align:center"><div class="num" id="rG">0G 0E 0P</div><div class="lbl">Simulados</div></div>
-<div style="text-align:center"><div class="num" id="rFalta">17</div><div class="lbl">Sin marcar</div></div>
+<div style="text-align:center"><div class="num" id="rFalta">16</div><div class="lbl">Sin marcar</div></div>
 <div id="rVeredicto" class="veredicto v-desciende">HOY: DESCIENDE</div>
 </div>
 
 <script>
 const tabla=[
-[1,"Ferro Carril Oeste",19,11,4,4,22,14,"+8",37,"ok","Ascenso"],
-[2,"Deportivo Morón",19,10,4,5,27,17,"+10",34,"ok","Ascenso"],
-[3,"Colón (SF)",19,8,8,3,23,15,"+8",32,"ok","Reducido"],
-[4,"Ciudad de Bolívar",19,7,9,3,18,13,"+5",30,"ok","Reducido"],
-[5,"Los Andes",19,7,8,4,16,7,"+9",29,"ok","Reducido"],
-[6,"Almirante Brown",19,8,5,6,14,12,"+2",29,"ok","Reducido"],
-[7,"Deportivo Madryn",19,7,7,5,25,20,"+5",28,"ok","Reducido"],
-[8,"Estudiantes (BA)",19,7,6,6,15,16,"-1",27,"ok","Reducido"],
-[9,"Godoy Cruz",19,6,7,6,19,17,"+2",25,"ok","Mitad"],
-[10,"San Miguel",19,5,10,4,17,20,"-3",25,"ok","Mitad"],
-[11,"Def. de Belgrano",19,5,8,6,14,17,"-3",23,"ok","Mitad"],
-[12,"Racing (Córdoba)",19,5,6,8,17,22,"-5",21,"p","Peligro"],
-[13,"San Telmo",19,4,8,7,15,18,"-3",20,"p","Peligro"],
-[14,"All Boys",19,4,8,7,12,19,"-7",20,"p","Peligro"],
-[15,"Central Norte",19,4,7,8,12,17,"-5",19,"p","Peligro"],
-[16,"Acassuso",19,5,4,10,13,20,"-7",19,"p","Peligro"],
-[17,"Mitre (SdE)",19,3,9,7,19,24,"-5",18,"d","DESCIENDE"],
-[18,"CHACO FOR EVER",19,2,7,10,14,25,"-11",13,"d","DESCIENDE"]];
+[1,"Ferro Carril Oeste",20,12,4,4,23,14,"+9",40,"ok","Ascenso"],
+[2,"Colón (SF)",20,9,8,3,27,15,"+12",35,"ok","Reducido"],
+[3,"Deportivo Morón",20,10,5,5,29,19,"+10",35,"ok","Reducido"],
+[4,"Los Andes",20,8,8,4,19,8,"+11",32,"ok","Reducido"],
+[5,"Ciudad de Bolívar",20,7,9,4,19,16,"+3",30,"ok","Reducido"],
+[6,"Estudiantes (BA)",20,8,6,6,18,16,"+2",30,"ok","Reducido"],
+[7,"Almirante Brown",20,8,6,6,15,13,"+2",30,"ok","Reducido"],
+[8,"Deportivo Madryn",20,7,8,5,27,22,"+5",29,"ok","Reducido"],
+[9,"Godoy Cruz",20,7,7,6,20,17,"+3",28,"ok","Mitad"],
+[10,"San Miguel",20,5,10,5,17,21,"-4",25,"ok","Mitad"],
+[11,"Racing (Córdoba)",20,6,6,8,20,24,"-4",24,"ok","Mitad"],
+[12,"Def. de Belgrano",20,5,8,7,14,18,"-4",23,"ok","Mitad"],
+[13,"All Boys",20,4,9,7,13,20,"-7",21,"p","Peligro"],
+[14,"San Telmo",20,4,8,8,16,21,"-5",20,"p","Peligro"],
+[15,"Acassuso",20,5,4,11,15,23,"-8",19,"p","Peligro"],
+[16,"Central Norte",20,4,7,9,12,21,"-9",19,"p","Peligro"],
+[17,"Mitre (SdE)",20,3,9,8,19,27,"-8",18,"d","DESCIENDE"],
+[18,"CHACO FOR EVER",20,3,7,10,17,26,"-9",16,"d","DESCIENDE"]];
 const tb=document.querySelector("#tablaZonaA tbody");
 tabla.forEach(r=>{
 const tr=document.createElement("tr");
@@ -273,24 +244,23 @@ el.classList.add("active");}
 new Chart(document.getElementById("chartLV"),{type:"bar",data:{
 labels:["For Ever","Mitre","Acassuso","C. Norte"],
 datasets:[{label:"Pts de local",data:[10,11,13,11],backgroundColor:"#2ecc71"},
-{label:"Pts de visitante",data:[3,7,6,8],backgroundColor:"#3498db"}]},
-options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#eaeaea"}},title:{display:true,text:"Puntos local vs visitante (19 fechas)",color:"#eaeaea"}},scales:{x:{ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}},y:{ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}}}}});
+{label:"Pts de visitante",data:[6,7,6,8],backgroundColor:"#3498db"}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#eaeaea"}},title:{display:true,text:"Puntos local vs visitante (20 fechas)",color:"#eaeaea"}},scales:{x:{ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}},y:{ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}}}}});
 
-// Proyección por fecha (fechas 19 a 36)
-const fechas=[...Array(18).keys()].map(i=>19+i);
-function ramp(total){const pts=[13];const add=(total-13)/17;for(let i=1;i<18;i++)pts.push(+(13+add*i).toFixed(1));return pts;}
+// Proyección por fecha (fechas 20 a 36)
+const fechas=[...Array(17).keys()].map(i=>20+i);
+function ramp(total){const pts=[16];const add=(total-16)/16;for(let i=1;i<17;i++)pts.push(+(16+add*i).toFixed(1));return pts;}
 new Chart(document.getElementById("chartProy"),{type:"line",data:{labels:fechas,
 datasets:[
-{label:"Óptimo (39)",data:ramp(39),borderColor:"#2ecc71",backgroundColor:"transparent",tension:.25},
-{label:"Medio (35)",data:ramp(35),borderColor:"#f1c40f",backgroundColor:"transparent",tension:.25},
-{label:"Malo (25)",data:ramp(25),borderColor:"#e74c3c",backgroundColor:"transparent",tension:.25},
+{label:"Óptimo (40)",data:ramp(40),borderColor:"#2ecc71",backgroundColor:"transparent",tension:.25},
+{label:"Medio (36)",data:ramp(36),borderColor:"#f1c40f",backgroundColor:"transparent",tension:.25},
+{label:"Malo (27)",data:ramp(27),borderColor:"#e74c3c",backgroundColor:"transparent",tension:.25},
 {label:"Línea de corte (~35)",data:fechas.map(()=>35),borderColor:"#ffffff",borderDash:[6,6],pointRadius:0},
-{label:"Ritmo actual (0,68/p)",data:fechas.map((f,i)=>+(13+0.68*i).toFixed(1)),borderColor:"#7f8c8d",borderDash:[2,4],pointRadius:0}]},
-options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#eaeaea"}},title:{display:true,text:"Proyección de puntos — fechas 19 a 36",color:"#eaeaea"}},scales:{x:{title:{display:true,text:"Fecha",color:"#9a9aa0"},ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}},y:{min:10,max:45,ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}}}}});
+{label:"Ritmo actual (0,80/p)",data:fechas.map((f,i)=>+(16+0.80*i).toFixed(1)),borderColor:"#7f8c8d",borderDash:[2,4],pointRadius:0}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#eaeaea"}},title:{display:true,text:"Proyección de puntos — fechas 20 a 36",color:"#eaeaea"}},scales:{x:{title:{display:true,text:"Fecha",color:"#9a9aa0"},ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}},y:{min:12,max:45,ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}}}}});
 
 const fixture=[
-[20,"11 jul","San Telmo","V","media","Duelo directo"],
-[21,"20 jul","San Miguel","L","media",""],
+[21,"20 jul","San Miguel","L","media","Hito inmediato"],
 [22,"25 jul","Colón","V","alta",""],
 [23,"1 ago","Dep. Morón","L","alta",""],
 [24,"8 ago","Godoy Cruz","V","alta",""],
@@ -306,7 +276,7 @@ const fixture=[
 [34,"17 oct","Central Norte","L","baja","FINAL x permanencia"],
 [35,"24 oct","Ferro","V","alta",""],
 [36,"31 oct","Racing (C)","L","media",""]];
-const sims=new Array(17).fill(null);
+const sims=new Array(16).fill(null);
 const fx=document.getElementById("fixture");
 fixture.forEach((f,i)=>{
 const div=document.createElement("div");div.className="fixture-row";
@@ -321,9 +291,9 @@ update();}
 function preset(tipo){
 document.querySelectorAll("#fixture .sim-btn").forEach(b=>b.className="sim-btn");
 let plan;
-if(tipo==="optimo")plan=["G","G","P","G","P","P","G","G","E","G","E","P","G","P","G","P","E"];
-else if(tipo==="medio")plan=["E","G","P","P","P","P","G","G","G","E","P","P","G","P","G","P","G"];
-else if(tipo==="malo")plan=["E","G","P","E","P","P","E","P","G","P","E","P","P","P","E","P","E"];
+if(tipo==="optimo")plan=["G","P","G","P","P","G","G","E","G","E","P","G","P","G","P","E"];
+else if(tipo==="medio")plan=["G","P","P","P","P","G","G","G","E","P","P","G","P","G","P","E"];
+else if(tipo==="malo")plan=["G","P","E","P","P","E","P","G","P","E","P","P","P","E","P","E"];
 else{sims.fill(null);update();return;}
 plan.forEach((r,i)=>{sims[i]=r;
 const row=fx.children[i].querySelectorAll(".sim-btn");
@@ -332,7 +302,7 @@ update();}
 function update(){
 let g=0,e=0,p=0,falta=0;
 sims.forEach(s=>{if(s==="G")g++;else if(s==="E")e++;else if(s==="P")p++;else falta++;});
-const pts=13+g*3+e;
+const pts=16+g*3+e;
 const maxPosible=pts+falta*3;
 document.getElementById("rPts").textContent=pts+(falta?"–"+maxPosible:"");
 document.getElementById("rG").textContent=`${g}G ${e}E ${p}P`;
