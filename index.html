@@ -98,60 +98,82 @@ ul.claves li{padding:6px 0 6px 22px;position:relative;font-size:.88rem;border-bo
 ul.claves li:before{content:"›";position:absolute;left:6px;color:var(--amarillo);font-weight:800;}
 .nota{background:rgba(52,152,219,.1);border:1px solid rgba(52,152,219,.4);border-radius:10px;padding:12px;font-size:.83rem;margin-top:10px;}
 .destacado{background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.4);border-radius:10px;padding:12px;font-size:.88rem;margin:14px 0;}
+
+.hist-wrap{display:flex;flex-wrap:wrap;gap:6px;}
+.hist-item{display:flex;flex-direction:column;align-items:center;background:#222;border:1px solid #333;border-radius:8px;padding:6px 8px;min-width:66px;}
+.hist-item .fx{font-size:.6rem;color:var(--mut);}
+.hist-item .rv{font-size:.66rem;margin:2px 0;text-align:center;white-space:nowrap;}
+.hist-item .sc{font-weight:800;font-size:.82rem;}
+.hist-item.W{border-color:rgba(46,204,113,.5);}.hist-item.W .sc{color:var(--verde);}
+.hist-item.E{border-color:rgba(241,196,15,.5);}.hist-item.E .sc{color:var(--amarillo);}
+.hist-item.L{border-color:rgba(231,76,60,.5);}.hist-item.L .sc{color:var(--rojo);}
+.hist-item.P0{opacity:.55;border-style:dashed;}
+.fx-detail{display:none;background:#191919;border:1px solid #333;border-left:3px solid var(--amarillo);border-radius:8px;margin:2px 0 10px;padding:10px 12px;font-size:.8rem;}
+.fx-detail.open{display:block;animation:fade .25s;}
+.form-chips{display:inline-flex;gap:4px;margin-left:4px;vertical-align:middle;}
+.chip{width:20px;height:20px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:800;color:#fff;}
+.chip.W{background:var(--verde);color:#000;}.chip.E{background:var(--amarillo);color:#000;}.chip.L{background:var(--rojo);}
+.fx-rival{cursor:pointer;}.fx-rival:hover b{color:var(--amarillo);}
+.mini-res{margin:4px 0;display:flex;align-items:center;gap:6px;}
+.f5{display:inline-flex;gap:3px;}
+.dot{width:15px;height:15px;border-radius:50%;display:inline-block;flex:0 0 auto;}
+.dot.W{background:var(--verde);}
+.dot.E{background:#6b6b70;}
+.dot.L{background:var(--rojo);}
 </style>
 </head>
 <body>
 <header>
 <h1>CHACO <span>FOR EVER</span> — OPERATIVO PERMANENCIA 2026</h1>
-<p>Primera Nacional · Zona A · Datos confirmados a la Fecha 23 (3 de agosto de 2026) · Proyecto Forever 2031</p>
-<span class="badge up">HOY: 16° — FUERA DE LA ZONA DE DESCENSO POR PRIMERA VEZ EN EL AÑO</span>
-<span class="badge up">F23: FOR EVER 2-0 MORÓN ✔ INVICTO DE 5</span>
+<p>Primera Nacional · Zona A · Datos confirmados a la Fecha 24 (9 de agosto de 2026) · F24 en curso para los de abajo · Proyecto Forever 2031</p>
+<span class="badge up">HOY: SIGUE 16° — FUERA DE LA ZONA (POR DIFERENCIA DE GOL)</span>
+<span class="badge">F24: GODOY CRUZ 2-1 FOR EVER ✘ SE CORTÓ EL INVICTO DE 5</span>
 </header>
 <div class="container">
 
-<div class="destacado"><b>El hito que buscábamos:</b> For Ever venció 2-0 al escolta Morón en Resistencia (Romero de nuevo, y estreno goleador de Díaz Chaves) y <b>salió de la zona de descenso por primera vez en el año</b>: es 16° con 22 puntos, arriba de Central Norte (22, peor diferencia: -6 vs -9) y de Acassuso (21, último). La racha: invicto de 5, 13 de los últimos 15 puntos, el mejor equipo de la segunda rueda. Y sigue el comodín: el pendiente con San Miguel (F21). Cuidado con dos cosas: el margen es mínimo (la diferencia de gol no define descensos: con igualdad de puntos hay partido desempate, art. 111), y Mitre está en fuga (ganó 0-2 en Bolívar, ya 25). La pelea hoy es con Central Norte, Acassuso y, un escalón arriba, San Telmo y All Boys (23).</div>
+<div class="destacado"><b>Se cortó el invicto:</b> For Ever cayó 1-2 en Mendoza ante Godoy Cruz (F24, descontó Romero) y terminó una racha de 5 sin perder. La buena noticia: <b>sigue 16°, fuera de la zona de descenso</b>, porque Central Norte (22 pts, -9) y Acassuso (21) todavía no lo superan; For Ever aguanta por diferencia de gol (-7) y por un punto sobre el último. Pero el margen es mínimo y la diferencia de gol NO salva: con igualdad de puntos hay desempate en cancha neutral (art. 111). Atención: Central Norte juega el lunes 10/8 ante All Boys y, si gana, salta a For Ever. Sigue vigente el comodín: el pendiente con San Miguel (F21). Quedan 13 partidos y 39 puntos en juego.</div>
 
 <div class="kpis">
-<div class="kpi verde"><div class="v">16°</div><div class="l">Posición (22 pts, 22 PJ)</div></div>
+<div class="kpi verde"><div class="v">16°</div><div class="l">Posición (22 pts, 23 PJ)</div></div>
 <div class="kpi amar"><div class="v">+1</div><div class="l">Sobre Acassuso (18°)</div></div>
-<div class="kpi azul"><div class="v">14</div><div class="l">Partidos restantes*</div></div>
-<div class="kpi verde"><div class="v">42</div><div class="l">Puntos en juego</div></div>
+<div class="kpi azul"><div class="v">13</div><div class="l">Partidos restantes*</div></div>
+<div class="kpi verde"><div class="v">39</div><div class="l">Puntos en juego</div></div>
 <div class="kpi amar"><div class="v">34-36</div><div class="l">Línea de corte proyectada</div></div>
 </div>
-<p class="fuente">* Incluye el pendiente con San Miguel (F21, fecha a confirmar). Ojo: Acassuso y San Telmo también tienen un pendiente entre sí.</p>
+<p class="fuente">* Incluye el pendiente con San Miguel (F21, a confirmar). La F24 de los rivales de abajo (Central Norte, Acassuso, San Telmo, All Boys) se juega hoy 9/8 y el lunes 10/8: la parte baja todavía puede moverse.</p>
 
-<h2>Tabla Zona A — Fecha 23</h2>
+<h2>Tabla Zona A — Fecha 24 (parcial)</h2>
 <div class="card" style="overflow-x:auto;">
-<table id="tablaZonaA"><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DIF</th><th>PTS</th><th>Estado</th></tr></thead><tbody></tbody></table>
-<p class="fuente">Descienden los DOS últimos de cada zona en forma directa. Tabla reconstruida partido a partido con los 9 resultados de la F23 verificados (Fichajes.com, 1-2/8/2026). PJ dispares por los pendientes de la F21.</p>
+<table id="tablaZonaA"><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DIF</th><th>PTS</th><th>Estado</th><th>Últ. 5</th></tr></thead><tbody></tbody></table>
+<p class="fuente">Descienden los DOS últimos de cada zona en forma directa. Tabla oficial a la Fecha 24 (BeSoccer, 10/8/2026) con la columna Últimos 5 (● verde ganó · ● gris empató · ● rojo perdió; el más reciente a la derecha). PJ dispares: Central Norte–All Boys (F24) y el pendiente de la F21 aún no se jugaron. La Zona A la integra Deportivo Madryn (Dep. Maipú juega en la Zona B).</p>
 </div>
 
 <h2>La pelea de abajo: rendimiento Local vs Visitante</h2>
 <div class="grid2">
 <div class="card"><div class="chart-box"><canvas id="chartLV"></canvas></div>
-<p class="fuente">For Ever: 13 pts de local (3G-4E-4P) y 9 de visitante (2G-3E-6P). Acassuso/San Telmo: reparto estimado en las últimas fechas.</p></div>
+<p class="fuente">For Ever: 13 pts de local (3G-4E-4P) y 9 de visitante (2G-3E-7P, con la caída en Mendoza). Acassuso/San Telmo: reparto estimado.</p></div>
 <div class="card">
 <ul class="claves">
-<li><b>Acassuso (18°, 21 pts):</b> el nuevo colista. Empató con Colón; 11 derrotas. Tiene pendiente con San Telmo: puede sumar, pero depende de un equipo en su misma pelea.</li>
-<li><b>Central Norte (17°, 22 pts):</b> reaccionó: 1-0 a Los Andes. Mismos puntos que For Ever. El cruce de la F34 en Resistencia es LA final por la permanencia.</li>
-<li><b>San Telmo (15°, 23 pts):</b> ganó 1-0 a San Miguel en la última y tiene pendiente. A un punto: sigue en la pelea.</li>
-<li><b>All Boys (14°, 23 pts):</b> perdió 0-2 con Madryn; 8 derrotas y solo 4 triunfos. El duelo de la F27 en Floresta vale doble.</li>
-<li><b>Mitre (13°, 25 pts):</b> en plena fuga con Biaggio: 7 de los últimos 9 (0-2 en Bolívar). Si sigue así, deja de ser rival directo.</li>
-<li><b>Def. Belgrano (12°, 25 pts):</b> empató con Estudiantes; a 3 del descenso, todavía mira de reojo.</li>
+<li><b>Central Norte (17°, 22 pts):</b> mismos puntos que For Ever pero peor diferencia (-9). Juega el lunes 10/8 ante All Boys: si gana, salta a For Ever. El cruce de la F34 en Resistencia es LA final por la permanencia.</li>
+<li><b>Acassuso (18°, 21 pts):</b> el colista. Juega hoy 9/8 ante Morón de visitante. Sigue último, a un punto de For Ever.</li>
+<li><b>San Telmo (14°, 23 pts):</b> juega hoy 9/8 ante Colón (V). A un punto de For Ever: sigue en la pelea.</li>
+<li><b>All Boys (15°, 23 pts):</b> choca el lunes 10/8 con Central Norte, duelo directo de abajo. El cruce de la F27 en Floresta también vale doble.</li>
+<li><b>Mitre (11°, 28 pts):</b> en fuga: ganó 2-1 a Def. Belgrano en la F24 y ya está 6 arriba del descenso. Dejó de ser rival directo.</li>
+<li><b>Def. Belgrano (13°, 25 pts):</b> perdió con Mitre; a 3 del descenso, todavía mira de reojo.</li>
 </ul></div>
 </div>
 
-<h2>Los 3 escenarios (recalculados post F23)</h2>
+<h2>Los 3 escenarios (recalculados post F24)</h2>
 <div class="tabs">
-<div class="tab optimo active" onclick="setEsc('optimo',this)"><h3>🟢 ÓPTIMO</h3><p>Salvación holgada · 40-41 pts · ~90%</p></div>
-<div class="tab medio" onclick="setEsc('medio',this)"><h3>🟡 MEDIO</h3><p>Salvación con lo justo · 36 pts · ~65%</p></div>
+<div class="tab optimo active" onclick="setEsc('optimo',this)"><h3>🟢 ÓPTIMO</h3><p>Salvación holgada · 40-41 pts · ~85%</p></div>
+<div class="tab medio" onclick="setEsc('medio',this)"><h3>🟡 MEDIO</h3><p>Salvación con lo justo · 36 pts · ~60%</p></div>
 <div class="tab malo" onclick="setEsc('malo',this)"><h3>🔴 MALO</h3><p>Descenso · ≤30 pts · solo si hay derrumbe</p></div>
 </div>
 
 <div id="esc-optimo" class="esc-panel active"><div class="card">
 <div class="esc-head"><span class="esc-prob" style="color:var(--verde)">40-41 pts</span>
 <div><b>La racha se administra y For Ever se salva con 3-4 fechas de anticipación.</b><br>
-<span style="color:var(--mut);font-size:.85rem">Requiere sumar 19 pts en 14 partidos (1,36 por partido; la racha actual corre a 2,6). Prob. si se sostiene: ~90%</span></div></div>
+<span style="color:var(--mut);font-size:.85rem">Requiere sumar 18-19 pts en 13 partidos (1,42 por partido). Prob. si se sostiene el nivel de la segunda rueda: ~85%</span></div></div>
 <ul class="claves">
 <li><b>La cuenta:</b> 5 triunfos + 4 empates. Base: ganar los 4 de local ganables (San Miguel pendiente, Los Andes, Def. Belgrano, Central Norte) + Estudiantes, y raspar empates afuera.</li>
 <li><b>Ya no hace falta ganar todos los duelos:</b> con empatar en Floresta (F27) y Santiago (F29) y ganarle a Central Norte (F34), el colchón se administra solo.</li>
@@ -162,7 +184,7 @@ ul.claves li:before{content:"›";position:absolute;left:6px;color:var(--amarill
 <div id="esc-medio" class="esc-panel"><div class="card">
 <div class="esc-head"><span class="esc-prob" style="color:var(--amarillo)">36 pts</span>
 <div><b>Salvación administrando un punto por partido.</b><br>
-<span style="color:var(--mut);font-size:.85rem">Requiere sumar 14 pts en 14 partidos (1,0 por partido — For Ever ya corre a 0,95 desde el arranque y a 2,6 en la racha). Prob. si se sostiene: ~65%</span></div></div>
+<span style="color:var(--mut);font-size:.85rem">Requiere sumar 14 pts en 13 partidos (1,08 por partido). Prob. si se sostiene: ~60%</span></div></div>
 <ul class="claves">
 <li><b>La cuenta bajó:</b> 4 triunfos + 2 empates alcanzan. Local: San Miguel (pend.), Los Andes, Def. Belgrano y Central Norte. Empates: Estudiantes y Racing.</li>
 <li><b>La clave defensiva:</b> no perder los duelos de abajo (All Boys F27, Mitre F29) aunque no se ganen.</li>
@@ -173,7 +195,7 @@ ul.claves li:before{content:"›";position:absolute;left:6px;color:var(--amarill
 <div id="esc-malo" class="esc-panel"><div class="card">
 <div class="esc-head"><span class="esc-prob" style="color:var(--rojo)">≤30 pts</span>
 <div><b>Solo un derrumbe devuelve a For Ever al descenso.</b><br>
-<span style="color:var(--mut);font-size:.85rem">Exige caer a 0,6 por partido (2 triunfos en 14). Aun así, la prob. de salvarse rondaría el 30% porque los de abajo también flaquean</span></div></div>
+<span style="color:var(--mut);font-size:.85rem">Exige caer a ~0,6 por partido (2-3 triunfos en 13). Aun así, la prob. de salvarse rondaría el 30% porque los de abajo también flaquean</span></div></div>
 <ul class="claves">
 <li><b>La señal temprana:</b> perder el pendiente con San Miguel o caer con Los Andes en casa (F26), y llegar a fin de agosto de nuevo 17°-18°.</li>
 <li><b>El patrón que condena:</b> que la racha haya sido solo un pico (ya pasó en abril: 2-0 a All Boys y luego 1 punto en 5 fechas) y que Central Norte sostenga su reacción.</li>
@@ -182,9 +204,16 @@ ul.claves li:before{content:"›";position:absolute;left:6px;color:var(--amarill
 </ul></div></div>
 
 <div class="card"><div class="chart-box"><canvas id="chartProy"></canvas></div>
-<p class="fuente">Proyección de puntos por partido restante (incluye el pendiente) vs. línea de corte (34-36 pts). Modelo Monte Carlo recalculado tras la fecha 23.</p></div>
+<p class="fuente">Proyección de puntos por partido restante (incluye el pendiente) vs. línea de corte (34-36 pts). Modelo Monte Carlo recalculado tras la fecha 24.</p></div>
 
-<h2>Fixture restante — Simulador interactivo (14 partidos)</h2>
+<h2>Historial For Ever 2026 — fecha por fecha</h2>
+<div class="card">
+<p style="font-size:.85rem;color:var(--mut);margin-bottom:10px;">Toda la temporada en Zona A. Verde = triunfo, amarillo = empate, rojo = derrota. Racha (últimos 5): <span id="racha5" class="form-chips"></span></p>
+<div id="histWrap" class="hist-wrap"></div>
+<p class="fuente" style="margin-top:10px">Balance: <b id="histBal"></b> · F21 (vs San Miguel) pendiente. Fuente: BeSoccer, 10/8/2026.</p>
+</div>
+
+<h2>Fixture restante — Simulador interactivo (13 partidos)</h2>
 <div class="card">
 <p style="font-size:.85rem;color:var(--mut);margin-bottom:10px;">Tocá G (ganado), E (empate) o P (perdido) en cada partido y mirá abajo si alcanza. Botones rápidos:
 <button class="sim-btn" style="width:auto;padding:0 10px" onclick="preset('optimo')">Óptimo</button>
@@ -194,43 +223,44 @@ ul.claves li:before{content:"›";position:absolute;left:6px;color:var(--amarill
 <div id="fixture"></div>
 </div>
 
-<div class="nota"><b>Metodología y fuentes.</b> Tabla reconstruida y verificada con los 9 resultados de la fecha 23 (Fichajes.com, 1-2/8/2026): CFE 2-0 Morón, Bolívar 0-2 Mitre, San Telmo 1-0 San Miguel, C. Norte 1-0 Los Andes, Madryn 2-0 All Boys, Acassuso 1-1 Colón, Ferro 1-3 Godoy Cruz, Def. Belgrano 1-1 Estudiantes, Alm. Brown 2-0 Racing. Reglamento: Boletín AFA 6823 (2 descensos directos por zona; desempate por partido, art. 111). Línea de corte calibrada con históricos 2023-2025. Los escenarios son proyecciones para decidir cómo actuar, no predicciones.</div>
+<div class="nota"><b>Metodología y fuentes.</b> Tabla actualizada con la fecha 24 (Futbolargentino, 9/8/2026). Resultado confirmado de For Ever: <b>Godoy Cruz 2-1 For Ever</b> (Rodríguez y Pino para el Tomba; descontó Romero). Otros resultados F24 aplicados: Alm. Brown 2-0 Ciudad de Bolívar, Estudiantes 0-1 Dep. Madryn, Racing 1-0 San Miguel y Mitre 2-1 Def. Belgrano. Restan All Boys–Central Norte (10/8) y Los Andes–Ferro, por eso la parte baja aún puede moverse. Reglamento: Boletín AFA (2 descensos directos por zona; desempate por partido en cancha neutral, art. 111). Línea de corte calibrada con históricos 2023-2025. Los escenarios son proyecciones para decidir cómo actuar, no predicciones.</div>
 </div>
 
 <div class="sim-result">
 <div style="text-align:center"><div class="num" id="rPts">22</div><div class="lbl">Pts proyectados</div></div>
 <div style="text-align:center"><div class="num" id="rG">0G 0E 0P</div><div class="lbl">Simulados</div></div>
-<div style="text-align:center"><div class="num" id="rFalta">14</div><div class="lbl">Sin marcar</div></div>
-<div id="rVeredicto" class="veredicto v-desciende">HOY: DESCIENDE</div>
+<div style="text-align:center"><div class="num" id="rFalta">13</div><div class="lbl">Sin marcar</div></div>
+<div id="rVeredicto" class="veredicto v-riesgo">HOY: 16° — A FLOTE</div>
 </div>
 
 <script>
 const tabla=[
-[1,"Ferro Carril Oeste",23,13,4,6,26,21,"+5",43,"ok","Ascenso"],
-[2,"Deportivo Morón",22,11,5,6,33,21,"+12",38,"ok","Reducido"],
-[3,"Colón (SF)",23,9,9,5,28,19,"+9",36,"ok","Reducido"],
-[4,"Almirante Brown",23,9,8,6,17,13,"+4",35,"ok","Reducido"],
-[5,"Godoy Cruz",22,9,7,6,25,19,"+6",34,"ok","Reducido"],
-[6,"Ciudad de Bolívar",23,8,10,5,21,19,"+2",34,"ok","Reducido"],
-[7,"Los Andes",22,8,9,5,19,9,"+10",33,"ok","Reducido"],
-[8,"Deportivo Madryn",22,8,9,5,29,22,"+7",33,"ok","Reducido"],
-[9,"Estudiantes (BA)",23,8,8,7,20,19,"+1",32,"ok","Mitad"],
-[10,"Racing (Córdoba)",23,7,6,10,22,28,"-6",27,"ok","Mitad"],
-[11,"San Miguel",22,5,11,6,17,22,"-5",26,"ok","Mitad"],
-[12,"Def. de Belgrano",22,5,10,7,15,19,"-4",25,"ok","Mitad"],
-[13,"Mitre (SdE)",23,5,10,8,22,27,"-5",25,"p","Peligro"],
-[14,"San Telmo",22,5,8,9,18,23,"-5",23,"p","Peligro"],
-[15,"All Boys",23,4,11,8,13,22,"-9",23,"p","Peligro"],
-[16,"CHACO FOR EVER",22,5,7,10,20,26,"-6",22,"ok","A FLOTE"],
-[17,"Central Norte",22,5,7,10,14,23,"-9",22,"d","DESCIENDE"],
-[18,"Acassuso",22,5,6,11,16,24,"-8",21,"d","DESCIENDE"]];
+[1,"Ferro Carril Oeste",24,14,4,6,28,22,"+6",46,"ok","Ascenso","WWLLW"],
+[2,"Deportivo Morón",23,12,5,6,37,22,"+15",41,"ok","Reducido","LEWLW"],
+[3,"Colón (SF)",24,10,9,5,29,19,"+10",39,"ok","Reducido","WLLEW"],
+[4,"Almirante Brown",24,10,8,6,19,13,"+6",38,"ok","Reducido","EEEWW"],
+[5,"Godoy Cruz",23,10,7,6,27,20,"+7",37,"ok","Reducido","LWWWW"],
+[6,"Deportivo Madryn",23,9,9,5,30,22,"+8",36,"ok","Reducido","LEEWW"],
+[7,"Ciudad de Bolívar",24,8,10,6,21,21,"0",34,"ok","Reducido","LEWLL"],
+[8,"Los Andes",23,8,9,6,20,11,"+9",33,"ok","Reducido","LWELL"],
+[9,"Estudiantes (BA)",24,8,8,8,20,20,"0",32,"ok","Mitad","WELEL"],
+[10,"Racing (Córdoba)",24,8,6,10,23,28,"-5",30,"ok","Mitad","WLWLW"],
+[11,"Mitre (SdE)",24,6,10,8,24,28,"-4",28,"ok","Mitad","LWEWW"],
+[12,"San Miguel",23,5,11,7,17,23,"-6",26,"ok","Mitad","ELELL"],
+[13,"Def. de Belgrano",23,5,10,8,16,21,"-5",25,"ok","Mitad","WLEEL"],
+[14,"San Telmo",23,5,8,10,18,24,"-6",23,"p","Peligro","LLLWL"],
+[15,"All Boys",23,4,11,8,13,22,"-9",23,"p","Peligro","EEEEL"],
+[16,"CHACO FOR EVER",23,5,7,11,21,28,"-7",22,"ok","A FLOTE","EWWWL"],
+[17,"Central Norte",22,5,7,10,14,23,"-9",22,"d","DESCIENDE","WELLW"],
+[18,"Acassuso",23,5,6,12,17,28,"-11",21,"d","DESCIENDE","ELEEL"]];
+function dots(s){return '<span class="f5">'+(s||"").split("").map(c=>`<span class="dot ${c}" title="${c==="W"?"Ganó":c==="E"?"Empató":"Perdió"}"></span>`).join("")+'</span>';}
 const tb=document.querySelector("#tablaZonaA tbody");
 tabla.forEach(r=>{
 const tr=document.createElement("tr");
 if(r[1]==="CHACO FOR EVER")tr.className="cfe";
 else if(r[10]==="d")tr.className="desc";
 else if(r[10]==="p")tr.className="peligro";
-tr.innerHTML=`<td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td><td>${r[6]}</td><td>${r[7]}</td><td>${r[8]}</td><td><b>${r[9]}</b></td><td><span class="tag ${r[10]}">${r[11]}</span></td>`;
+tr.innerHTML=`<td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td><td>${r[6]}</td><td>${r[7]}</td><td>${r[8]}</td><td><b>${r[9]}</b></td><td><span class="tag ${r[10]}">${r[11]}</span></td><td>${dots(r[12])}</td>`;
 tb.appendChild(tr);});
 
 function setEsc(id,el){
@@ -245,8 +275,8 @@ datasets:[{label:"Pts de local",data:[13,14,15,16,15],backgroundColor:"#2ecc71"}
 {label:"Pts de visitante",data:[9,8,6,7,10],backgroundColor:"#3498db"}]},
 options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#eaeaea"}},title:{display:true,text:"Puntos local vs visitante (a la F23; Acassuso/S.Telmo estimado)",color:"#eaeaea"}},scales:{x:{ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}},y:{ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}}}}});
 
-const paso=[...Array(15).keys()];
-function ramp(total){const pts=[22];const add=(total-22)/14;for(let i=1;i<15;i++)pts.push(+(22+add*i).toFixed(1));return pts;}
+const paso=[...Array(14).keys()];
+function ramp(total){const pts=[22];const add=(total-22)/13;for(let i=1;i<14;i++)pts.push(+(22+add*i).toFixed(1));return pts;}
 new Chart(document.getElementById("chartProy"),{type:"line",data:{labels:paso.map(i=>i===0?"Hoy":"+"+i),
 datasets:[
 {label:"Óptimo (41)",data:ramp(41),borderColor:"#2ecc71",backgroundColor:"transparent",tension:.25},
@@ -254,11 +284,10 @@ datasets:[
 {label:"Malo (30)",data:ramp(30),borderColor:"#e74c3c",backgroundColor:"transparent",tension:.25},
 {label:"Línea de corte (~35)",data:paso.map(()=>35),borderColor:"#ffffff",borderDash:[6,6],pointRadius:0},
 {label:"Ritmo histórico (1,0/p)",data:paso.map((f,i)=>+(22+1.0*i).toFixed(1)),borderColor:"#7f8c8d",borderDash:[2,4],pointRadius:0}]},
-options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#eaeaea"}},title:{display:true,text:"Proyección de puntos — 14 partidos restantes",color:"#eaeaea"}},scales:{x:{title:{display:true,text:"Partidos jugados desde hoy",color:"#9a9aa0"},ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}},y:{min:18,max:46,ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}}}}});
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#eaeaea"}},title:{display:true,text:"Proyección de puntos — 13 partidos restantes",color:"#eaeaea"}},scales:{x:{title:{display:true,text:"Partidos jugados desde hoy",color:"#9a9aa0"},ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}},y:{min:18,max:46,ticks:{color:"#9a9aa0"},grid:{color:"#2c2c30"}}}}});
 
 const fixture=[
 ["F21*","a conf.","San Miguel — PENDIENTE","L","media","Partido en mano"],
-[24,"8 ago","Godoy Cruz","V","alta",""],
 [25,"15 ago","Gimnasia (J) — interzonal","V","alta",""],
 [26,"22 ago","Los Andes","L","media",""],
 [27,"29 ago","All Boys","V","media","Duelo directo"],
@@ -271,12 +300,48 @@ const fixture=[
 [34,"17 oct","Central Norte","L","baja","FINAL x permanencia"],
 [35,"24 oct","Ferro","V","alta",""],
 [36,"31 oct","Racing (C)","L","media",""]];
-const sims=new Array(14).fill(null);
+const sims=new Array(13).fill(null);
+const rivalForm={
+"San Miguel":[["L","Racing (C) 1-0 San Miguel · V · F24"],["L","San Telmo 1-0 San Miguel · V · F23"],["E","San Miguel 0-0 Acassuso · L · F22"]],
+"Gimnasia Jujuy":[["L","Quilmes 2-0 Gimnasia (J) · V · F21"],["L","Colegiales 2-1 Gimnasia (J) · V · F23"],["W","Gimnasia (J) 2-1 Güemes · L · F22"]],
+"Los Andes":[["L","Central Norte 1-0 Los Andes · V · F23"],["E","Los Andes 0-0 Madryn · L · F22"],["W","Los Andes 3-1 C. Bolívar · L · F20"]],
+"All Boys":[["L","Dep. Madryn 2-0 All Boys · V · F23"],["E","All Boys 0-0 Def. Belgrano · L · F22"],["E","C. Bolívar 0-0 All Boys · V · F21"]],
+"Estudiantes":[["L","Estudiantes 0-1 Madryn · L · F24"],["E","Def. Belgrano 1-1 Estudiantes · V · F23"],["L","Estudiantes 1-2 C. Bolívar · L · F22"]],
+"Mitre":[["W","Mitre 2-1 Def. Belgrano · L · F24"],["W","C. Bolívar 0-2 Mitre · V · F23"],["E","Mitre 0-0 Alm. Brown · L · F22"]],
+"Almirante Brown":[["W","Alm. Brown 2-0 C. Bolívar · L · F24"],["W","Alm. Brown 2-0 Racing (C) · L · F23"],["E","Mitre 0-0 Alm. Brown · V · F22"]],
+"Ciudad de Bolivar":[["L","Alm. Brown 2-0 C. Bolívar · V · F24"],["L","C. Bolívar 0-2 Mitre · L · F23"],["W","Estudiantes 1-2 C. Bolívar · V · F22"]],
+"Def Belgrano":[["L","Mitre 2-1 Def. Belgrano · V · F24"],["E","Def. Belgrano 1-1 Estudiantes · L · F23"],["E","All Boys 0-0 Def. Belgrano · V · F22"]],
+"Madryn":[["W","Estudiantes 0-1 Dep. Madryn · V · F24"],["W","Dep. Madryn 2-0 All Boys · L · F23"],["E","Los Andes 0-0 Dep. Madryn · V · F22"]],
+"Central Norte":[["W","Central Norte 1-0 Los Andes · L · F23"],["L","Godoy Cruz 2-1 Central Norte · V · F22"],["L","Colón 4-0 Central Norte · V · F20"]],
+"Ferro":[["L","Ferro 1-3 Godoy Cruz · L · F23"],["L","Dep. Morón 4-0 Ferro · V · F22"],["W","Ferro 2-0 Colón · L · F21"]],
+"Racing":[["W","Racing (C) 1-0 San Miguel · L · F24"],["L","Alm. Brown 2-0 Racing (C) · V · F23"],["W","Racing (C) 2-1 San Telmo · L · F22"]]};
+const fxKey=["San Miguel","Gimnasia Jujuy","Los Andes","All Boys","Estudiantes","Mitre","Almirante Brown","Ciudad de Bolivar","Def Belgrano","Madryn","Central Norte","Ferro","Racing"];
+const h2h=["Ida (F3): San Miguel 2-0 For Ever. La revancha es el pendiente.",
+"Ida (F7): For Ever 1-2 Gimnasia (J).",
+"Ida (F8): Los Andes 2-0 For Ever.",
+"Ida (F9): For Ever 2-0 All Boys.",
+"Ida (F10): Estudiantes (BA) 0-0 For Ever.",
+"Ida (F11): For Ever 1-1 Mitre (SdE).",
+"Ida (F12): Almirante Brown 1-0 For Ever.",
+"Ida (F13): For Ever 0-1 Ciudad de Bolívar.",
+"Ida (F14): Def. Belgrano 0-0 For Ever.",
+"Ida (F15): For Ever 1-2 Dep. Madryn.",
+"Ida (F16): Central Norte 1-1 For Ever. Revancha decisiva en la F34.",
+"Ida (F17): For Ever 1-2 Ferro.",
+"Ida (F18): Racing (C) 2-0 For Ever."];
+function toggleDet(i){const d=document.getElementById("det"+i);if(d)d.classList.toggle("open");}
 const fx=document.getElementById("fixture");
 fixture.forEach((f,i)=>{
 const div=document.createElement("div");div.className="fixture-row";
-div.innerHTML=`<span class="fx-fecha">${typeof f[0]==="number"?"F"+f[0]:f[0]}</span><span class="fx-rival"><b>${f[2]}</b> <span style="color:var(--mut);font-size:.75rem">${f[1]}${f[5]?" · "+f[5]:""}</span></span><span class="fx-cond ${f[3]}">${f[3]}</span><span class="fx-dif dif-${f[4]}">dif. ${f[4]}</span><span class="sim-btns"><button class="sim-btn" onclick="mark(${i},'G',this)">G</button><button class="sim-btn" onclick="mark(${i},'E',this)">E</button><button class="sim-btn" onclick="mark(${i},'P',this)">P</button></span>`;
-fx.appendChild(div);});
+div.innerHTML=`<span class="fx-fecha">${typeof f[0]==="number"?"F"+f[0]:f[0]}</span><span class="fx-rival" onclick="toggleDet(${i})"><b>▸ ${f[2]}</b> <span style="color:var(--mut);font-size:.75rem">${f[1]}${f[5]?" · "+f[5]:""}</span></span><span class="fx-cond ${f[3]}">${f[3]}</span><span class="fx-dif dif-${f[4]}">dif. ${f[4]}</span><span class="sim-btns"><button class="sim-btn" onclick="mark(${i},'G',this)">G</button><button class="sim-btn" onclick="mark(${i},'E',this)">E</button><button class="sim-btn" onclick="mark(${i},'P',this)">P</button></span>`;
+fx.appendChild(div);
+const det=document.createElement("div");det.className="fx-detail";det.id="det"+i;
+const form=rivalForm[fxKey[i]]||[];
+const chips=form.map(x=>`<span class="chip ${x[0]}">${x[0]}</span>`).join("");
+const list=form.map(x=>`<div class="mini-res"><span class="chip ${x[0]}">${x[0]}</span> ${x[1]}</div>`).join("");
+const sede=f[3]==="L"?"For Ever de LOCAL":"For Ever de VISITANTE";
+det.innerHTML=`<div><b>${f[2]}</b> — ${sede} · Fecha ${typeof f[0]==="number"?f[0]:f[0]} · ${f[1]}${f[5]?" · "+f[5]:""}</div><div style="margin-top:8px"><b>Últimos 3 del rival:</b> <span class="form-chips">${chips}</span></div><div style="margin-top:6px">${list}</div><div style="margin-top:8px;color:var(--mut);font-style:italic">${h2h[i]||""}</div>`;
+fx.appendChild(det);});
 function mark(i,r,btn){
 sims[i]=r;
 const btns=btn.parentElement.querySelectorAll(".sim-btn");
@@ -286,12 +351,12 @@ update();}
 function preset(tipo){
 document.querySelectorAll("#fixture .sim-btn").forEach(b=>b.className="sim-btn");
 let plan;
-if(tipo==="optimo")plan=["G","P","P","G","E","G","E","E","P","G","P","G","P","E"];
-else if(tipo==="medio")plan=["G","P","P","G","P","E","P","P","P","G","P","G","P","E"];
-else if(tipo==="malo")plan=["G","P","P","E","P","P","P","P","P","P","P","G","P","E"];
+if(tipo==="optimo")plan=["G","P","G","E","G","E","E","P","G","P","G","P","E"];
+else if(tipo==="medio")plan=["G","P","G","P","E","P","P","P","G","P","G","P","E"];
+else if(tipo==="malo")plan=["G","P","E","P","P","P","P","P","P","P","G","P","E"];
 else{sims.fill(null);update();return;}
 plan.forEach((r,i)=>{sims[i]=r;
-const row=fx.children[i].querySelectorAll(".sim-btn");
+const row=fx.querySelectorAll(".fixture-row")[i].querySelectorAll(".sim-btn");
 row[r==="G"?0:r==="E"?1:2].classList.add("sel"+r);});
 update();}
 function update(){
@@ -312,6 +377,29 @@ if(pts>=36){v.className="veredicto v-salvo";v.textContent="SE SALVA ("+pts+" pts
 else if(pts>=34){v.className="veredicto v-riesgo";v.textContent="AL LÍMITE ("+pts+" pts) — puede definirse por desempate";}
 else{v.className="veredicto v-desciende";v.textContent="DESCIENDE ("+pts+" pts)";}}}
 update();
+</script>
+<script>
+const historial=[
+[1,"Acassuso","V",0,2],[2,"San Telmo","L",2,2],[3,"San Miguel","V",0,2],[4,"Colón","L",1,0],
+[5,"Dep. Morón","V",2,3],[6,"Godoy Cruz","L",1,1],[7,"Gimnasia (J)","L",1,2],[8,"Los Andes","V",0,2],
+[9,"All Boys","L",2,0],[10,"Estudiantes","V",0,0],[11,"Mitre","L",1,1],[12,"Alm. Brown","V",0,1],
+[13,"C. Bolívar","L",0,1],[14,"Def. Belgrano","V",0,0],[15,"Dep. Madryn","L",1,2],[16,"Central Norte","V",1,1],
+[17,"Ferro","L",1,2],[18,"Racing (C)","V",0,2],[19,"Acassuso","L",1,1],[20,"San Telmo","V",3,1],
+[22,"Colón","V",1,0],[23,"Dep. Morón","L",2,0],[24,"Godoy Cruz","V",1,2]];
+(function(){
+const hw=document.getElementById("histWrap");if(!hw)return;
+let hg=0,he=0,hp=0;
+historial.forEach(m=>{const gf=m[3],gc=m[4];const res=gf>gc?"W":gf<gc?"L":"E";
+if(res==="W")hg++;else if(res==="E")he++;else hp++;
+const d=document.createElement("div");d.className="hist-item "+res;
+d.innerHTML=`<span class="fx">F${m[0]} ${m[2]}</span><span class="rv">${m[1]}</span><span class="sc">${gf}-${gc}</span>`;
+hw.appendChild(d);});
+const dp=document.createElement("div");dp.className="hist-item P0";
+dp.innerHTML=`<span class="fx">F21 L</span><span class="rv">San Miguel</span><span class="sc">—</span>`;
+hw.insertBefore(dp,hw.children[20]);
+document.getElementById("histBal").textContent=`${hg}G ${he}E ${hp}P`;
+document.getElementById("racha5").innerHTML=historial.slice(-5).map(m=>{const r=m[3]>m[4]?"W":m[3]<m[4]?"L":"E";return `<span class="chip ${r}">${r}</span>`;}).join("");
+})();
 </script>
 </body>
 </html>
