@@ -1,0 +1,42 @@
+name: Actualizar panel Chaco For Ever
+
+# Corre todos los dias a las 09:00 de Argentina (12:00 UTC).
+# Tambien se puede disparar a mano desde la pestana Actions (Run workflow).
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write   # necesario para que el workflow pueda commitear al repo
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bajar el repo
+        uses: actions/checkout@v4
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: pip install pandas lxml
+
+      - name: Actualizar la tabla del panel
+        run: python scripts/update_panel.py
+
+      - name: Publicar si hubo cambios
+        run: |
+          git config user.name "chaco-forever-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html Panel_Permanencia_CFE_2026.html Panel_Permanencia_CFE_2026_WhatsApp.html
+          if git diff --cached --quiet; then
+            echo "Sin cambios en la tabla: no hay nada para publicar."
+          else
+            git commit -m "Auto: actualizacion diaria de la tabla ($(TZ='America/Argentina/Buenos_Aires' date +%d/%m/%Y))"
+            git push
+            echo "Publicado. Netlify redeploya solo."
+          fi

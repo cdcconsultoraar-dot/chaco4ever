@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Desarrollo · Hitos, Roadmap y Contingencias · Chaco For Ever</title>
+<style>
+  :root{
+    --negro:#0e0e10; --negro2:#17171b; --carbon:#1f1f25; --linea:#2c2c34;
+    --blanco:#f5f5f2; --gris:#9a9aa3; --gris2:#c7c7cf;
+    --verde:#1db954; --verde-d:#0f7a36; --dorado:#d4a02a; --rojo:#e0524c; --azul:#3a78c2; --violeta:#8e6fd8;
+    --radio:14px; --sombra:0 8px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--negro);color:var(--blanco);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--verde)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 80px}
+
+  header.hero{background:
+      radial-gradient(900px 300px at 80% -10%,rgba(29,185,84,.18),transparent),
+      linear-gradient(180deg,#101014,#0b0b0d);
+    border-bottom:1px solid var(--linea);padding:54px 0 40px;margin-bottom:8px}
+  .hero .wrap{display:flex;flex-direction:column;gap:14px;padding-bottom:0}
+  .badge{display:inline-block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--dorado);border:1px solid var(--linea);padding:4px 12px;border-radius:999px;width:max-content}
+  h1{font-size:40px;line-height:1.08;letter-spacing:-.02em}
+  h1 span{color:var(--verde)}
+  .sub{color:var(--gris2);font-size:16.5px;max-width:760px}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .chip{background:var(--carbon);border:1px solid var(--linea);border-radius:999px;
+    padding:6px 14px;font-size:13px;color:var(--gris2)}
+  .chip b{color:var(--blanco)}
+
+  nav{position:sticky;top:0;z-index:20;background:rgba(11,11,13,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--linea);margin-bottom:34px}
+  nav .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 20px}
+  nav a{color:var(--gris);text-decoration:none;font-size:13.5px;white-space:nowrap;
+    padding:7px 13px;border-radius:8px;transition:.15s}
+  nav a:hover{color:var(--blanco);background:var(--carbon)}
+
+  section{margin-bottom:50px;scroll-margin-top:70px}
+  h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--verde);
+    margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  h2::before{content:"";width:26px;height:2px;background:var(--verde);display:inline-block}
+  h3{font-size:19px;margin-bottom:8px}
+  p.lead{color:var(--gris2);margin-bottom:18px;max-width:820px;font-size:14.5px}
+
+  .card{background:var(--negro2);border:1px solid var(--linea);border-radius:var(--radio);padding:22px}
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:820px){.g2,.g3,.g4{grid-template-columns:1fr}h1{font-size:31px}}
+
+  .kpi{background:linear-gradient(160deg,var(--carbon),var(--negro2));border:1px solid var(--linea);
+    border-radius:var(--radio);padding:18px}
+  .kpi .n{font-size:26px;font-weight:700;letter-spacing:-.02em}
+  .kpi .n small{font-size:14px;color:var(--verde);font-weight:600}
+  .kpi .l{font-size:12.5px;color:var(--gris);margin-top:4px}
+  .kpi.rojo .n{color:var(--rojo)} .kpi.verde .n{color:var(--verde)} .kpi.dorado .n{color:var(--dorado)}
+
+  /* FASES */
+  .fase{border:1px solid var(--linea);border-radius:var(--radio);background:var(--negro2);
+    margin-bottom:18px;overflow:hidden}
+  .fase-head{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer;user-select:none}
+  .fase-head:hover{background:var(--carbon)}
+  .fnum{width:40px;height:40px;border-radius:10px;flex:0 0 40px;display:flex;align-items:center;
+    justify-content:center;font-weight:800;font-size:15px;color:#0b0b0d}
+  .fase-head .tit{flex:1;min-width:0}
+  .fase-head .tit h3{font-size:16.5px;margin:0}
+  .fase-head .tit .per{font-size:12.5px;color:var(--gris)}
+  .fstate{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px;border:1px solid var(--linea);white-space:nowrap}
+  .fstate.ok{color:var(--verde);border-color:rgba(29,185,84,.4)}
+  .fstate.parcial{color:var(--dorado);border-color:rgba(212,160,42,.4)}
+  .fstate.pend{color:var(--gris)}
+  .caret{color:var(--gris);transition:.2s;font-size:12px}
+  .fase.open .caret{transform:rotate(90deg)}
+  .fase-body{display:none;border-top:1px solid var(--linea);padding:20px 22px}
+  .fase.open .fase-body{display:block}
+
+  .barwrap{display:flex;align-items:center;gap:12px;margin:2px 0 16px}
+  .bar{flex:1;height:9px;border-radius:99px;background:var(--carbon);position:relative;overflow:hidden}
+  .bar .fill{position:absolute;inset:0 auto 0 0;width:0%;border-radius:99px;
+    background:linear-gradient(90deg,var(--verde-d),var(--verde));transition:width .35s}
+  .bar .umbral{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--dorado)}
+  .pct{font-size:13px;font-weight:700;min-width:120px;text-align:right;color:var(--gris2)}
+  .pct b{color:var(--blanco);font-size:15px}
+
+  .hito{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:10px;
+    cursor:pointer;transition:.12s;border:1px solid transparent}
+  .hito:hover{background:var(--carbon)}
+  .hito.done{opacity:.55}
+  .hito.done .ht{text-decoration:line-through}
+  .cbx{width:19px;height:19px;flex:0 0 19px;border:2px solid var(--gris);border-radius:6px;margin-top:2px;
+    display:flex;align-items:center;justify-content:center;font-size:12px;color:#0b0b0d;transition:.12s}
+  .hito.done .cbx{background:var(--verde);border-color:var(--verde)}
+  .hito.done .cbx::after{content:"✓";font-weight:800}
+  .ht{font-size:14px}
+  .hd{font-size:12.5px;color:var(--gris)}
+  .hw{margin-left:auto;font-size:11px;color:var(--dorado);border:1px solid var(--linea);
+    border-radius:6px;padding:1px 7px;white-space:nowrap;align-self:center}
+  .crit{color:var(--rojo);font-size:10.5px;font-weight:700;letter-spacing:.05em;margin-left:6px}
+
+  .fnote{margin-top:14px;padding:12px 14px;border-left:3px solid var(--dorado);
+    background:rgba(212,160,42,.06);border-radius:0 10px 10px 0;font-size:13px;color:var(--gris2)}
+  .fnote b{color:var(--dorado)}
+
+  /* GANTT */
+  .gantt{overflow-x:auto;border:1px solid var(--linea);border-radius:var(--radio);background:var(--negro2)}
+  .gantt table{border-collapse:collapse;width:100%;min-width:860px}
+  .gantt th,.gantt td{border-bottom:1px solid var(--linea);padding:9px 10px;font-size:12.5px;text-align:left}
+  .gantt th{color:var(--gris);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;
+    background:var(--carbon);position:sticky;top:0}
+  .gantt td.act{min-width:210px;color:var(--gris2)}
+  .gcell{width:44px}
+  .gbar{height:14px;border-radius:6px}
+  .gb-rojo{background:linear-gradient(90deg,#a33b36,var(--rojo))}
+  .gb-azul{background:linear-gradient(90deg,#2a5archived,var(--azul));background:linear-gradient(90deg,#2a5a94,var(--azul))}
+  .gb-verde{background:linear-gradient(90deg,var(--verde-d),var(--verde))}
+  .gb-dorado{background:linear-gradient(90deg,#9a741c,var(--dorado))}
+  .gb-violeta{background:linear-gradient(90deg,#5f4a96,var(--violeta))}
+  .leyenda{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;font-size:12.5px;color:var(--gris2)}
+  .leyenda span{display:flex;align-items:center;gap:7px}
+  .dot{width:11px;height:11px;border-radius:4px;display:inline-block}
+
+  /* TABLAS */
+  table.t{width:100%;border-collapse:collapse;font-size:13.5px}
+  table.t th{color:var(--gris);font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;
+    text-align:left;padding:10px 12px;border-bottom:1px solid var(--linea);background:var(--carbon)}
+  table.t td{padding:11px 12px;border-bottom:1px solid var(--linea);color:var(--gris2);vertical-align:top}
+  table.t td b{color:var(--blanco)}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px}
+  .p-alta{background:rgba(224,82,76,.15);color:var(--rojo)}
+  .p-media{background:rgba(212,160,42,.15);color:var(--dorado)}
+  .p-baja{background:rgba(29,185,84,.15);color:var(--verde)}
+  .tscroll{overflow-x:auto;border:1px solid var(--linea);border-radius:var(--radio)}
+  .tscroll table{min-width:780px}
+
+  ul.clean{list-style:none;display:flex;flex-direction:column;gap:10px}
+  ul.clean li{padding-left:22px;position:relative;color:var(--gris2);font-size:14px}
+  ul.clean li::before{content:"▸";color:var(--verde);position:absolute;left:0}
+
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+  button.btn{background:var(--carbon);color:var(--gris2);border:1px solid var(--linea);
+    border-radius:9px;padding:8px 16px;font-size:13px;cursor:pointer;transition:.15s}
+  button.btn:hover{color:var(--blanco);border-color:var(--verde)}
+  .global{background:linear-gradient(160deg,var(--carbon),var(--negro2));border:1px solid var(--linea);
+    border-radius:var(--radio);padding:20px 22px;margin-bottom:22px}
+  .global .barwrap{margin-bottom:0}
+
+  footer{border-top:1px solid var(--linea);padding:26px 0;color:var(--gris);font-size:12.5px;text-align:center}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">CDC Consultora · Proyecto Forever 2031 · Confidencial</span>
+    <h1>Plan de Desarrollo: <span>Hitos, Roadmap y Contingencias</span></h1>
+    <p class="sub">Desarrollo paso a paso del proyecto de reestructuración y revitalización del Club Atlético
+      Chaco For Ever, elaborado a partir de la reunión con la Comisión Directiva del <b>16 de julio de 2026</b>
+      (análisis estratégico y propuesta de colaboración) y el roadmap operativo previo (02–22 jul).</p>
+    <div class="meta-row">
+      <span class="chip">Dirección: <b>Mauricio Benoist</b></span>
+      <span class="chip">PM: <b>Carlos “Piru”</b></span>
+      <span class="chip">Horizonte: <b>2026 → 2031 (Primera División)</b></span>
+      <span class="chip">Recupero inversión: <b>3–4 años</b></span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap" style="padding-bottom:10px">
+    <a href="#contexto">Contexto</a>
+    <a href="#criterios">Criterios de aceptación</a>
+    <a href="#fases">Fases e hitos</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#contingencias">Contingencias</a>
+    <a href="#gobernanza">Gobernanza</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- CONTEXTO -->
+<section id="contexto">
+  <h2>Contexto y punto de partida</h2>
+  <p class="lead">Diagnóstico surgido de la reunión del 16/07 con la Comisión Directiva: crisis financiera-operativa
+    con alto costo bancario, caída de recaudación e infraestructura deteriorada. La propuesta acordada combina
+    <b>refinanciación de deuda a cambio de concesión de espacios</b>, creación de <b>fundación + SAS</b> y un
+    portafolio de negocios que independice el cashflow del resultado deportivo.</p>
+  <div class="grid g4">
+    <div class="kpi rojo"><div class="n">$230 M</div><div class="l">Deuda bancaria (+ intereses) · giro en descubierto al 48% TNA (CFT 60–70%)</div></div>
+    <div class="kpi rojo"><div class="n">$200–300 M</div><div class="l">Cheques emitidos en circulación</div></div>
+    <div class="kpi rojo"><div class="n">$400 M</div><div class="l">Déficit proyectado próxima temporada (riesgo de inhibición)</div></div>
+    <div class="kpi rojo"><div class="n">$2.000 → 2.600 M</div><div class="l">Presupuesto fútbol profesional (proyección +30%)</div></div>
+    <div class="kpi verde"><div class="n">$1.400 M</div><div class="l">Meta privada de sponsorización a 12 meses (sin gobierno)</div></div>
+    <div class="kpi verde"><div class="n">5.000</div><div class="l">Socios objetivo (cuota + beneficios 20–30% en gym/pádel/F5)</div></div>
+    <div class="kpi dorado"><div class="n">$600 M</div><div class="l">Aporte anual Lotería + Banco (se mantiene separado del flujo privado)</div></div>
+    <div class="kpi dorado"><div class="n">2.000–3.000</div><div class="l">Asistencia actual por partido (pico histórico: 11.000)</div></div>
+  </div>
+</section>
+
+<!-- CRITERIOS -->
+<section id="criterios">
+  <h2>Criterios de aceptación por etapa</h2>
+  <p class="lead">Cada fase se aprueba cuando el avance ponderado de sus hitos alcanza el <b>umbral de aceptación</b>.
+    Los umbrales no son uniformes: se calibraron según la criticidad de la fase, el grado de control interno sobre el
+    resultado y la tolerancia a desvíos que admite el proyecto sin comprometer las fases siguientes.</p>
+  <div class="tscroll"><table class="t">
+    <thead><tr><th>Fase</th><th>Umbral</th><th>Fundamento del porcentaje</th></tr></thead>
+    <tbody>
+      <tr><td><b>F0 · Estabilización financiera</b></td><td><b>90%</b></td>
+        <td>Es la condición habilitante de todo lo demás: si no se frena el costo financiero (CFT 60–70%) y no se cubren sueldos/viajes, el club arranca la temporada inhibido. Casi no admite desvíos; solo se tolera margen menor en tareas de documentación.</td></tr>
+      <tr><td><b>F1 · Blindaje jurídico</b></td><td><b>100%</b></td>
+        <td>Hitos binarios (poder, SAS, fundación, contrato de concesión). Un instrumento legal incompleto invalida la protección ante cambios de dirigencia: la propia CD pidió que el proyecto “no dependa de personas sino de instrumentos legales”. No hay aprobación parcial posible.</td></tr>
+      <tr><td><b>F2 · Ingeniería del plan de negocio</b></td><td><b>85%</b></td>
+        <td>Los entregables (relevamiento, presupuestos, tiempos de recupero, esquema de concesión) están bajo control propio del equipo; se admite un 15% de ajustes finos (cotizaciones pendientes, alternativas de materiales) sin frenar la decisión de inversión.</td></tr>
+      <tr><td><b>F3 · Obras e infraestructura</b></td><td><b>80%</b></td>
+        <td>La construcción depende de terceros (clima, provisión de materiales, inflación de costos). Se acepta la fase con las unidades de negocio principales operativas (gimnasio, pádel, F5) aunque obras secundarias (fachada, bodegón completo) tengan demora acotada.</td></tr>
+      <tr><td><b>F4 · Motor comercial</b></td><td><b>70%</b></td>
+        <td>Las metas de venta dependen del mercado. Alcanzar ≥70% de la meta de sponsorización (~$980 M sobre $1.400 M) ya revierte el déficit proyectado de $400 M y valida el modelo. Por debajo de 70% se activa contingencia comercial.</td></tr>
+      <tr><td><b>F5 · Masa societaria y comunidad</b></td><td><b>75%</b></td>
+        <td>La conversión de socios es progresiva: 3.750 socios (75% de 5.000) con cuota + beneficios ya genera el piso de ingresos fijos buscado. La base de 16.000 ex socios da respaldo estadístico al objetivo.</td></tr>
+      <tr><td><b>F6 · Consolidación y recupero</b></td><td><b>75%</b></td>
+        <td>Fase de largo plazo con variables externas (deportivas y macro). Se aprueba con recupero de capital en curso dentro del horizonte 3–4 años y las unidades de negocio con rentabilidad sostenida ≥ 3 trimestres.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- FASES -->
+<section id="fases">
+  <h2>Fases e hitos · seguimiento interactivo</h2>
+  <p class="lead">Marcá cada hito a medida que se cumple: el avance se guarda en este dispositivo (localStorage).
+    La marca dorada en cada barra indica el umbral de aceptación de la fase. Los hitos señalados como
+    <span class="crit">CRÍTICO</span> son bloqueantes: sin ellos la fase no puede aprobarse aunque se supere el umbral numérico.</p>
+
+  <div class="toolbar">
+    <button class="btn" onclick="expandAll(true)">Expandir todo</button>
+    <button class="btn" onclick="expandAll(false)">Colapsar todo</button>
+    <button class="btn" onclick="resetAll()">Reiniciar seguimiento</button>
+  </div>
+
+  <div class="global">
+    <h3 style="font-size:14px;margin-bottom:10px;color:var(--gris2)">Avance global del proyecto</h3>
+    <div class="barwrap">
+      <div class="bar"><div class="fill" id="gfill"></div></div>
+      <div class="pct" id="gpct"><b>0%</b></div>
+    </div>
+  </div>
+
+  <div id="fases-list"></div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <h2>Roadmap 2026 – 2031</h2>
+  <p class="lead">Secuencia trimestral. Las fases se solapan deliberadamente: la estabilización financiera y el
+    blindaje legal corren en paralelo; el motor comercial arranca antes de terminar las obras para financiar el recupero.</p>
+  <div class="gantt">
+    <table>
+      <thead>
+        <tr>
+          <th>Fase / Actividad</th>
+          <th class="gcell">Q3'26</th><th class="gcell">Q4'26</th><th class="gcell">Q1'27</th><th class="gcell">Q2'27</th>
+          <th class="gcell">Q3'27</th><th class="gcell">Q4'27</th><th class="gcell">2028</th><th class="gcell">2029</th><th class="gcell">2030–31</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="act"><b>F0</b> · Estabilización financiera</td><td><div class="gbar gb-rojo"></div></td><td><div class="gbar gb-rojo" style="opacity:.45"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="act"><b>F1</b> · Blindaje jurídico (SAS · fundación · concesión)</td><td><div class="gbar gb-azul"></div></td><td><div class="gbar gb-azul" style="opacity:.45"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="act"><b>F2</b> · Plan de negocio e ingeniería</td><td><div class="gbar gb-azul"></div></td><td><div class="gbar gb-azul"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="act"><b>F3</b> · Obras: gimnasio · pádel · F5 · fachada</td><td></td><td><div class="gbar gb-dorado"></div></td><td><div class="gbar gb-dorado"></div></td><td><div class="gbar gb-dorado" style="opacity:.45"></div></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="act"><b>F4</b> · Motor comercial (sponsors · pauta · digital)</td><td></td><td><div class="gbar gb-verde" style="opacity:.5"></div></td><td><div class="gbar gb-verde"></div></td><td><div class="gbar gb-verde"></div></td><td><div class="gbar gb-verde"></div></td><td><div class="gbar gb-verde"></div></td><td></td><td></td><td></td></tr>
+        <tr><td class="act"><b>F5</b> · Masa societaria y experiencia de club</td><td></td><td><div class="gbar gb-verde" style="opacity:.5"></div></td><td><div class="gbar gb-verde"></div></td><td><div class="gbar gb-verde"></div></td><td><div class="gbar gb-verde"></div></td><td><div class="gbar gb-verde"></div></td><td><div class="gbar gb-verde" style="opacity:.45"></div></td><td></td><td></td></tr>
+        <tr><td class="act"><b>F6</b> · Consolidación · recupero · Primera 2031</td><td></td><td></td><td></td><td></td><td></td><td><div class="gbar gb-violeta" style="opacity:.5"></div></td><td><div class="gbar gb-violeta"></div></td><td><div class="gbar gb-violeta"></div></td><td><div class="gbar gb-violeta"></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="leyenda">
+    <span><i class="dot" style="background:var(--rojo)"></i> Urgencia</span>
+    <span><i class="dot" style="background:var(--azul)"></i> Estructuración</span>
+    <span><i class="dot" style="background:var(--dorado)"></i> Obras</span>
+    <span><i class="dot" style="background:var(--verde)"></i> Ingresos</span>
+    <span><i class="dot" style="background:var(--violeta)"></i> Consolidación</span>
+    <span style="color:var(--gris)">Barras tenues = intensidad decreciente / arranque parcial</span>
+  </div>
+</section>
+
+<!-- CONTINGENCIAS -->
+<section id="contingencias">
+  <h2>Matriz de contingencias</h2>
+  <p class="lead">Riesgos identificados a partir del diagnóstico de la CD y del entorno del club, con disparador
+    (señal que activa el plan) y respuesta prevista.</p>
+  <div class="tscroll"><table class="t">
+    <thead><tr><th>Riesgo</th><th>Prob.</th><th>Impacto</th><th>Disparador</th><th>Plan de contingencia</th></tr></thead>
+    <tbody>
+      <tr><td><b>Inhibición AFA</b> por déficit de $400 M y presión gremial</td>
+        <td><span class="pill p-alta">Alta</span></td><td><span class="pill p-alta">Crítico</span></td>
+        <td>Vencimientos de sueldos impagos &gt; 30 días antes del cierre de inscripciones</td>
+        <td>Priorizar F0 sobre toda otra inversión; canalizar donaciones de la fundación directamente a sueldos y viajes; renegociar cronograma con el gremio con el plan de refinanciación como respaldo.</td></tr>
+      <tr><td><b>Descenso deportivo</b> (no alcanzar los puntos de permanencia)</td>
+        <td><span class="pill p-media">Media</span></td><td><span class="pill p-alta">Crítico</span></td>
+        <td>Proyección de puntos por debajo de la línea de permanencia a 8 fechas del cierre (ver Panel de Permanencia)</td>
+        <td>El modelo de negocio se diseñó para no depender del resultado deportivo: se sostienen gimnasio/pádel/F5/pauta; se recalibra la meta de sponsorización (−30/40%) y se refuerza la narrativa de comunidad (documental, socios) para retener masa societaria.</td></tr>
+      <tr><td><b>Cambio de dirigencia</b> que desconozca los acuerdos</td>
+        <td><span class="pill p-media">Media</span></td><td><span class="pill p-alta">Crítico</span></td>
+        <td>Elecciones de CD o renuncias en bloque</td>
+        <td>Mitigado por diseño: contrato de concesión blindado con cláusulas de continuidad, penalidades y arbitraje; SAS y fundación como contrapartes jurídicas independientes de las personas. Si F1 no está al 100%, se suspenden desembolsos de obra.</td></tr>
+      <tr><td><b>Devaluación / inflación de costos</b> de obra y plantel</td>
+        <td><span class="pill p-alta">Alta</span></td><td><span class="pill p-media">Alto</span></td>
+        <td>Salto cambiario &gt; 20% en un trimestre o desvío de presupuesto de obra &gt; 15%</td>
+        <td>Presupuestos de obra dolarizados o indexados con techo; contratos de concesión con cuota de ajuste periódico; priorización por retorno (primero F5 y pádel, de recupero más rápido) y fases de obra escalonadas que permiten pausar sin perder lo invertido.</td></tr>
+      <tr><td><b>No aprobación / demora gubernamental</b> (Ley de Esponsorización, fundación)</td>
+        <td><span class="pill p-media">Media</span></td><td><span class="pill p-media">Alto</span></td>
+        <td>Trámite &gt; 3 meses sin resolución (el proceso normal demora 2–3 meses)</td>
+        <td>El flujo gubernamental ($600 M Lotería/Banco) ya se gestiona separado de las metas privadas; se compensa con sponsorización directa, pauta en km 44 / pantallas 9 de Julio y donaciones de la comunidad del inversor (300–1.500 asistentes por evento).</td></tr>
+      <tr><td><b>Meta comercial incumplida</b> (&lt; 70% de $1.400 M)</td>
+        <td><span class="pill p-media">Media</span></td><td><span class="pill p-media">Alto</span></td>
+        <td>Cierre de trimestre &lt; 60% del objetivo acumulado</td>
+        <td>Redireccionar esfuerzo a empresas del interior provincial (agroindustria: AGD, Bunge, Coop. Avellaneda) vía Ley de Esponsorización; empaquetar inventario digital + cartelería en combos de menor ticket; extender la gira de sponsors a Corrientes y Formosa.</td></tr>
+      <tr><td><b>Demoras o sobrecostos de obra</b> (techos, piso sintético, playón 56×42)</td>
+        <td><span class="pill p-media">Media</span></td><td><span class="pill p-media">Medio</span></td>
+        <td>Desvío &gt; 30 días sobre el cronograma del arquitecto</td>
+        <td>Contratos de obra por unidad de negocio independiente (se puede abrir el gimnasio aunque falte el bodegón); penalidades por demora; segunda cotización permanente de proveedores de sintético y estructura.</td></tr>
+      <tr><td><b>Seguridad / entorno barra</b> (robos, vandalismo sobre lo nuevo)</td>
+        <td><span class="pill p-media">Media</span></td><td><span class="pill p-media">Medio</span></td>
+        <td>Incidente sobre instalaciones nuevas o reincidencia de robo de cableado</td>
+        <td>Continuar política de la CD: cero cesión económica, denuncia sistemática y coordinación policial. Inversión temprana en recuperar el centro de monitoreo (hoy al 60% de iluminación) como parte de F3; el “club vivo” de mañana a noche reduce ventanas de vandalismo.</td></tr>
+      <tr><td><b>Dependencia de personas clave</b> (Mauricio, Piru)</td>
+        <td><span class="pill p-baja">Baja</span></td><td><span class="pill p-media">Alto</span></td>
+        <td>Indisponibilidad prolongada de un rol clave</td>
+        <td>Poderes y mandatos formalizados en la SAS; documentación de procesos y reporting mensual obligatorio como condición del proyecto; roles duplicados en el equipo (Eduardo/Sebastián en comercial, Sonia/Stefano en administración del régimen).</td></tr>
+      <tr><td><b>Productora de eventos sin capacidad operativa</b> (estadio/microestadio)</td>
+        <td><span class="pill p-media">Media</span></td><td><span class="pill p-baja">Medio</span></td>
+        <td>Primer evento con pérdida o incidentes logísticos</td>
+        <td>Arrancar con alianzas con productoras establecidas (riesgo compartido) antes de montar productora propia; el microestadio requiere primero reponer el 40% de cableado robado.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- GOBERNANZA -->
+<section id="gobernanza">
+  <h2>Gobernanza y ritmo de seguimiento</h2>
+  <div class="grid g3">
+    <div class="card">
+      <h3>Cadencia</h3>
+      <ul class="clean">
+        <li><b>Semanal:</b> reunión operativa de seguimiento con la CD (instaurada a partir del “lunes” pactado el 16/07).</li>
+        <li><b>Mensual:</b> rendición financiera de cada ingreso — condición innegociable del proyecto.</li>
+        <li><b>Trimestral:</b> revisión de umbrales de aceptación y actualización de la matriz de contingencias.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Reglas de decisión</h3>
+      <ul class="clean">
+        <li>Fase aprobada = avance ≥ umbral <b>y</b> todos los hitos críticos cumplidos.</li>
+        <li>Ningún desembolso de obra (F3) sin F1 al 100%.</li>
+        <li>Si un disparador de contingencia se activa, se documenta la respuesta en la reunión semanal siguiente.</li>
+        <li>Flujo gubernamental siempre separado de metas privadas.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Responsables</h3>
+      <ul class="clean">
+        <li><b>Mauricio:</b> dirección general, financiamiento, sponsors.</li>
+        <li><b>Piru:</b> PM, SAS, sistemas, reporting y control de ingresos.</li>
+        <li><b>CD For Ever:</b> información financiera, planos, contrato de concesión, urgencias.</li>
+        <li><b>Equipo:</b> Eduardo y Sebastián (comercial), Nati (comunicación), Sonia y Stefano (Ley de Esponsorización), Martín Ojeda (deportivo/fundación), Daniel (medios y gobierno).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  CDC Consultora · Proyecto Forever 2031 · Plan de Desarrollo v1.0 · 19 de julio de 2026 · Uso interno / Confidencial<br>
+  Fuentes: Resumen reunión CD 16/07/2026 · Roadmap operativo 02–22 jul · Reunión de Esponsorización 25/06 · Resolución Fundación Unión del Sur
+</footer>
+
+<script>
+const FASES = [
+  {
+    id:"f0", num:"F0", color:"#e0524c", umbral:90,
+    titulo:"Estabilización financiera (urgencias)",
+    periodo:"Jul – Oct 2026",
+    nota:"<b>Por qué 90%:</b> fase habilitante. El costo financiero efectivo del descubierto (60–70%) consume el margen operativo; sin frenarlo, el déficit de $400 M lleva a inhibición. Solo se tolera desvío menor en tareas documentales.",
+    hitos:[
+      {t:"Frenar el giro en descubierto: acuerdo de refinanciación de la deuda bancaria ($230 M + intereses)", d:"Negociación banco · condición: concesión de espacios como respaldo", w:25, crit:true},
+      {t:"Ordenar el frente de cheques emitidos ($200–300 M): cronograma de rescate/canje", d:"Dirigencia + Mauricio", w:15, crit:true},
+      {t:"Cubrir urgencias inmediatas: sueldos y viajes Mendoza + Jujuy (~$50 M)", d:"Evita conflicto gremial y pérdida de puntos por escritorio", w:20, crit:true},
+      {t:"Recibir de la CD la información financiera completa (flujo de caja, vencimientos, cheques, recaudación)", d:"Insumo del modelado · compromiso asumido el 16/07", w:15, crit:false},
+      {t:"Modelo de cashflow consolidado a 12 meses con escenarios (base / estrés)", d:"Piru + Mauricio", w:15, crit:false},
+      {t:"Presupuesto fútbol 2027 acotado: plan para absorber el +30% ($2.600 M) sin nueva deuda cara", d:"Con CD y área deportiva", w:10, crit:false},
+    ]
+  },
+  {
+    id:"f1", num:"F1", color:"#3a78c2", umbral:100,
+    titulo:"Blindaje jurídico e institucional",
+    periodo:"Jul – Sep 2026",
+    nota:"<b>Por qué 100%:</b> hitos binarios. La CD pidió expresamente que el proyecto no dependa de personas sino de instrumentos legales; un contrato incompleto expone toda la inversión ante un cambio de dirigencia.",
+    hitos:[
+      {t:"Firma del poder legal a Carlos “Piru”", d:"Comprometido para el día siguiente a la reunión del 16/07", w:10, crit:true},
+      {t:"Constitución de la SAS local (contratos, concesiones, operación tecnológica-administrativa)", d:"Ejecuta Piru con el poder recibido", w:20, crit:true},
+      {t:"Puesta en marcha de la fundación (canalización de donaciones $5.000–10.000/mes por donante)", d:"Objeto social cuidado para habilitar apoyo gubernamental específico", w:20, crit:true},
+      {t:"Contrato de concesión firmado: años, distribución de utilidades, beneficios a socios, cláusulas de continuidad", d:"Borrador de la CD con asesoría legal + esquema definido por Mauricio", w:35, crit:true},
+      {t:"Registro del esquema ante Ley de Esponsorización provincial (proyecto deportivo aprobado)", d:"Sonia + Stefano · trámite 2–3 meses · referencia: Resolución F. Unión del Sur ($73,6 M)", w:15, crit:false},
+    ]
+  },
+  {
+    id:"f2", num:"F2", color:"#3a78c2", umbral:85,
+    titulo:"Ingeniería del plan de negocio",
+    periodo:"Jul – Oct 2026",
+    nota:"<b>Por qué 85%:</b> entregables bajo control propio del equipo. Se admite 15% de ajuste fino (cotizaciones alternativas, materiales) sin postergar la decisión de inversión.",
+    hitos:[
+      {t:"Proyección financiera y plan de obra con presupuestos y tiempos de recupero (gimnasio, pádel, techo, F5)", d:"Compromiso de Mauricio 'antes del lunes' · documento base de decisión", w:25, crit:true},
+      {t:"Relevamiento del arquitecto: frente sobre 9 de Julio y playón trasero (56×42 m)", d:"Medidas, costos de construcción, techo y piso", w:20, crit:true},
+      {t:"Planos y medidas provistos por la CD (frente, salón, playón, microestadio) + estado de cámaras e iluminación", d:"Compromiso CD del 16/07", w:15, crit:false},
+      {t:"Esquema económico de concesión validado por ambas partes (recupero 3–4 años)", d:"Distribución de utilidades y participación del club", w:20, crit:true},
+      {t:"Plan comercial de pauta: cartelería km 44 (doble vista) y pantallas en esquinas de 9 de Julio", d:"Inventario, tarifario y pipeline de marcas", w:10, crit:false},
+      {t:"Plan de monetización digital: paquetes de patrocinio, inventario de formatos y embudos de conversión", d:"El seguidor digital como audiencia para marcas, no como ingreso directo de plataforma", w:10, crit:false},
+    ]
+  },
+  {
+    id:"f3", num:"F3", color:"#d4a02a", umbral:80,
+    titulo:"Obras e infraestructura («club vivo»)",
+    periodo:"Oct 2026 – Jun 2027",
+    nota:"<b>Por qué 80%:</b> dependencia de terceros (clima, materiales, inflación). La fase se acepta con las unidades de negocio principales operativas aunque obras secundarias tengan demora acotada. <b>Regla:</b> ningún desembolso sin F1 al 100%.",
+    hitos:[
+      {t:"Gimnasio en el frente del club operativo", d:"Zona de mayor visibilidad e imagen institucional", w:20, crit:true},
+      {t:"Canchas de pádel del frente operativas", d:"Recupero rápido · demanda local alta", w:15, crit:true},
+      {t:"Canchas de fútbol 5 con sintético en el playón trasero (56×42 m)", d:"Explotación tarde/noche por alquiler", w:15, crit:true},
+      {t:"Bodegón / heladería / farmacia jerarquizando la fachada sobre 9 de Julio", d:"Vida social + seguridad + atracción de vecinos", w:10, crit:false},
+      {t:"Concesión del buffet/cantina con provisión de desayuno y servicios al plantel profesional", d:"Valor directo al equipo como condición de la concesión", w:10, crit:false},
+      {t:"Recuperación del centro de monitoreo y reposición del 40% de cableado robado (microestadio al 100% de luz)", d:"Habilita eventos y protege la inversión nueva", w:15, crit:true},
+      {t:"Puesta en valor básica: pintura, baños, luminarias y cámaras dañadas", d:"Revierte dos años sin inversión preventiva", w:10, crit:false},
+      {t:"Instalación de pantallas publicitarias en esquinas del club", d:"Infraestructura del negocio de pauta urbana", w:5, crit:false},
+    ]
+  },
+  {
+    id:"f4", num:"F4", color:"#1db954", umbral:70,
+    titulo:"Motor comercial y diversificación de ingresos",
+    periodo:"Oct 2026 – Dic 2027",
+    nota:"<b>Por qué 70%:</b> resultado dependiente del mercado. Con ~$980 M (70% de la meta) ya se revierte el déficit proyectado de $400 M y se valida el modelo. Bajo 70% se activa la contingencia comercial (interior provincial + combos de menor ticket).",
+    hitos:[
+      {t:"Sponsorización privada: ≥ $1.400 M anuales (sin contar gobierno)", d:"Meta fijada por Mauricio · gira Chaco, Corrientes y Formosa", w:30, crit:true},
+      {t:"Cartera de empresas activas bajo Ley de Esponsorización (agroindustria: AGD, Bunge, Coop. Avellaneda)", d:"Eduardo capta · Sonia/Stefano instrumentan · requiere IIBB Chaco", w:15, crit:false},
+      {t:"Cartelería km 44 de la autovía comercializada (Corrientes–Chaco, alto tráfico)", d:"Marcas de consumo masivo y empresas regionales", w:10, crit:false},
+      {t:"Pantallas de 9 de Julio con pauta vendida (negocio de vía pública propio)", d:"Tarifario + ocupación ≥ 60%", w:10, crit:false},
+      {t:"Programa de donaciones de la fundación en régimen (eventos de 300 a 1.500 personas)", d:"Donaciones mensuales aplicadas a sueldos, viajes y gastos operativos", w:15, crit:false},
+      {t:"Monetización digital activa: patrocinadores sobre contenidos y embudos de conversión", d:"YouTube/Facebook como vidriera, no como fuente directa", w:10, crit:false},
+      {t:"Primer evento en estadio/microestadio con alianza de productora (resultado ≥ break-even)", d:"Antes de montar productora propia", w:10, crit:false},
+    ]
+  },
+  {
+    id:"f5", num:"F5", color:"#1db954", umbral:75,
+    titulo:"Masa societaria y experiencia de club",
+    periodo:"Oct 2026 – Jun 2028",
+    nota:"<b>Por qué 75%:</b> conversión progresiva. 3.750 socios ya constituyen el piso de ingresos fijos buscado; la base de 16.000 ex socios respalda la meta de 5.000.",
+    hitos:[
+      {t:"5.000 socios activos con débito de cuota", d:"Desde ~1.200 · umbral de aceptación: 3.750", w:35, crit:true},
+      {t:"Programa «cuota + beneficios» operativo: 20–30% de descuento en gimnasio, pádel y F5", d:"El beneficio tangible es el motor de conversión", w:20, crit:true},
+      {t:"Campaña de reactivación sobre la base de 16.000 ex socios ejecutada", d:"Sebastián + Community Manager", w:15, crit:false},
+      {t:"Asistencia promedio ≥ 6.000 espectadores por partido local", d:"Desde 2.000–3.000 actuales · experiencia integral de matchday", w:15, crit:false},
+      {t:"Documental estilo Wrexham publicado y en comercialización", d:"Registro desde el día 1 · Nati + Eduardo (dron)", w:8, crit:false},
+      {t:"Identidad de marca «Forever» consolidada (fachada, señalética, contenidos)", d:"El activo diferencial jerarquizado con infraestructura moderna", w:7, crit:false},
+    ]
+  },
+  {
+    id:"f6", num:"F6", color:"#8e6fd8", umbral:75,
+    titulo:"Consolidación, recupero y proyección deportiva",
+    periodo:"2027 – 2031",
+    nota:"<b>Por qué 75%:</b> horizonte largo con variables externas (deportivas y macroeconómicas). Se aprueba con el recupero de capital en curso dentro del plazo pactado y rentabilidad sostenida de las unidades de negocio.",
+    hitos:[
+      {t:"Deuda bancaria cara cancelada o reconvertida a costo financiero razonable", d:"Meta original del roadmap: deuda USD 0", w:20, crit:true},
+      {t:"Recupero del capital del inversor en curso según cronograma (horizonte 3–4 años)", d:"Condición de sustentabilidad del acuerdo", w:20, crit:true},
+      {t:"Unidades de negocio con rentabilidad sostenida ≥ 3 trimestres consecutivos", d:"Gimnasio, pádel, F5, pauta, buffet", w:15, crit:false},
+      {t:"Cashflow del club independiente del resultado deportivo (ingresos no-matchday > 50%)", d:"Objetivo estructural del modelo «club vivo»", w:15, crit:false},
+      {t:"Cantera y scouting profesionalizados (Fase 2 deportiva) generando activos transferibles", d:"Martín Ojeda", w:10, crit:false},
+      {t:"Presupuesto deportivo competitivo para pelear el ascenso", d:"Sin recurrir a deuda de corto plazo", w:10, crit:false},
+      {t:"Ascenso a Primera División (objetivo Forever 2031)", d:"Resultado deportivo · no bloqueante para la aprobación económica de la fase", w:10, crit:false},
+    ]
+  },
+];
+
+const LS = "cfe_plan_desarrollo_v1";
+let estado = {};
+try { estado = JSON.parse(localStorage.getItem(LS)) || {}; } catch(e) { estado = {}; }
+
+function save(){ localStorage.setItem(LS, JSON.stringify(estado)); }
+
+function render(){
+  const cont = document.getElementById("fases-list");
+  cont.innerHTML = "";
+  FASES.forEach(f => {
+    const el = document.createElement("div");
+    el.className = "fase" + ((estado["open_"+f.id]!==false) ? " open" : "");
+    el.id = "fase-"+f.id;
+    const hitosHtml = f.hitos.map((h,i)=>{
+      const done = !!estado[f.id+"_"+i];
+      return `<div class="hito${done?" done":""}" onclick="toggle('${f.id}',${i})">
+        <div class="cbx"></div>
+        <div><div class="ht">${h.t}${h.crit?'<span class="crit">CRÍTICO</span>':''}</div>
+        <div class="hd">${h.d}</div></div>
+        <span class="hw">${h.w}%</span>
+      </div>`;
+    }).join("");
+    el.innerHTML = `
+      <div class="fase-head" onclick="toggleFase('${f.id}')">
+        <div class="fnum" style="background:${f.color}">${f.num}</div>
+        <div class="tit"><h3>${f.titulo}</h3><div class="per">${f.periodo} · umbral de aceptación: ${f.umbral}%</div></div>
+        <span class="fstate" id="st-${f.id}">Pendiente</span>
+        <span class="caret">▶</span>
+      </div>
+      <div class="fase-body">
+        <div class="barwrap">
+          <div class="bar"><div class="fill" id="fill-${f.id}"></div><div class="umbral" style="left:${f.umbral}%"></div></div>
+          <div class="pct" id="pct-${f.id}"></div>
+        </div>
+        ${hitosHtml}
+        <div class="fnote">${f.nota}</div>
+      </div>`;
+    cont.appendChild(el);
+  });
+  update();
+}
+
+function toggle(fid, i){
+  estado[fid+"_"+i] = !estado[fid+"_"+i];
+  save(); render();
+}
+function toggleFase(fid){
+  estado["open_"+fid] = !(estado["open_"+fid]!==false);
+  save(); render();
+}
+function expandAll(open){
+  FASES.forEach(f=>estado["open_"+f.id]=open);
+  save(); render();
+}
+function resetAll(){
+  if(confirm("¿Reiniciar todo el seguimiento de hitos?")){
+    estado = {}; save(); render();
+  }
+}
+
+function update(){
+  let gTot=0, gDone=0;
+  FASES.forEach(f=>{
+    let tot=0, done=0, critOk=true;
+    f.hitos.forEach((h,i)=>{
+      tot+=h.w;
+      if(estado[f.id+"_"+i]) done+=h.w;
+      else if(h.crit) critOk=false;
+    });
+    const pct = tot? Math.round(done/tot*100):0;
+    gTot+=tot; gDone+=done;
+    const fill=document.getElementById("fill-"+f.id);
+    const pctEl=document.getElementById("pct-"+f.id);
+    const st=document.getElementById("st-"+f.id);
+    if(fill){ fill.style.width=pct+"%";
+      fill.style.background = pct>=f.umbral && critOk
+        ? "linear-gradient(90deg,var(--verde-d),var(--verde))"
+        : pct>0 ? "linear-gradient(90deg,#9a741c,var(--dorado))" : "var(--carbon)";
+    }
+    if(pctEl) pctEl.innerHTML = `<b>${pct}%</b> / ${f.umbral}%`;
+    if(st){
+      if(pct>=f.umbral && critOk){ st.textContent="Aprobada"; st.className="fstate ok"; }
+      else if(pct>=f.umbral && !critOk){ st.textContent="Umbral sin críticos"; st.className="fstate parcial"; }
+      else if(pct>0){ st.textContent="En curso "+pct+"%"; st.className="fstate parcial"; }
+      else { st.textContent="Pendiente"; st.className="fstate pend"; }
+    }
+  });
+  const g = gTot? Math.round(gDone/gTot*100):0;
+  document.getElementById("gfill").style.width=g+"%";
+  document.getElementById("gpct").innerHTML=`<b>${g}%</b> global`;
+}
+
+render();
+</script>
+</body>
+</html>
