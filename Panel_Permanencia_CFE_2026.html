@@ -106,10 +106,10 @@ tr.cfezona{background:rgba(231,76,60,.18)!important;}
 <body>
 <header>
 <h1>CHACO <span>FOR EVER</span> — OPERATIVO PERMANENCIA 2026</h1>
-<p>Primera Nacional · Zona A · Tabla al cierre de la Fecha 24 (actualizado 14/8/2026) · Proyecto Forever 2031</p>
-<span class="badge">HOY: 17° — DE NUEVO EN ZONA DE DESCENSO</span>
+<p>Primera Nacional · Zona A · For Ever 17° (22 pts) · Proyecto Forever 2031</p>
+<span class="badge">HOY: 17° — EN ZONA DE DESCENSO</span>
 <span class="badge">CLAVE: FOR EVER TIENE UN PARTIDO MENOS (PENDIENTE F21 vs SAN MIGUEL)</span>
-<p class="stamp">🕑 Última actualización de datos: <b id="lastUpdate">14/08/2026</b></p>
+<p class="stamp">🕑 Última actualización de datos: <b id="lastUpdate">15/08/2026 12:27</b></p>
 </header>
 <div class="container">
 
@@ -228,13 +228,13 @@ const tabla=[
 [9,"Estudiantes (BA)",24,8,8,8,20,20,"0",32,"ok","Mitad","WELEL"],
 [10,"Racing (Córdoba)",24,8,6,10,23,28,"-5",30,"ok","Mitad","WLWLW"],
 [11,"Mitre (SdE)",24,6,10,8,24,28,"-4",28,"ok","Mitad","LWEWW"],
-[12,"San Miguel",23,5,11,7,17,23,"-6",26,"ok","Mitad","ELELL"],
-[13,"Def. de Belgrano",23,5,10,8,16,21,"-5",25,"ok","Mitad","WLEEL"],
-[14,"All Boys",24,4,12,8,14,23,"-9",24,"p","Peligro","EEEDE"],
+[12,"Def. de Belgrano",24,5,11,8,16,21,"-5",26,"ok","Mitad","LEELE"],
+[13,"San Miguel",23,5,11,7,17,23,"-6",26,"ok","Mitad","ELELL"],
+[14,"All Boys",24,4,12,8,14,23,"-9",24,"p","Peligro","EEELE"],
 [15,"San Telmo",23,5,8,10,18,24,"-6",23,"p","Peligro","LLLWL"],
-[16,"Central Norte",23,5,8,10,15,24,"-9",23,"p","Peligro","EDDVE"],
+[16,"Central Norte",23,5,8,10,15,24,"-9",23,"p","Peligro","ELLWE"],
 [17,"CHACO FOR EVER",23,5,7,11,21,28,"-7",22,"d","ZONA ROJA","EWWWL"],
-[18,"Acassuso",23,5,6,12,17,28,"-11",21,"d","DESCIENDE","ELEEL"]];
+[18,"Acassuso",24,5,7,12,18,29,"-11",22,"d","DESCIENDE","LEELE"]];
 function dots(s){return '<span class="f5">'+(s||"").split("").map(c=>`<span class="dot ${c}" title="${c==="W"?"Ganó":c==="E"?"Empató":"Perdió"}"></span>`).join("")+'</span>';}
 const tb=document.querySelector("#tablaZonaA tbody");
 tabla.forEach(r=>{
