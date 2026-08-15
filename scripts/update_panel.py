@@ -212,12 +212,13 @@ def main():
             log(f"ABORTO: no cierran los numeros de {r['name']}. No modifico nada.")
             return 0
 
-    fecha = (datetime.datetime.utcnow() - datetime.timedelta(hours=3)).strftime("%d/%m/%Y")
+    now_ar = datetime.datetime.utcnow() - datetime.timedelta(hours=3)
+    fecha = now_ar.strftime("%d/%m/%Y")
+    stamp_val = now_ar.strftime("%d/%m/%Y %H:%M")
     pos, pts, pj = cfe["pos"], cfe["pts"], cfe["pj"]
     in_zone = pos >= 17
 
-    new_sub = ('<p>Primera Nacional · Zona A · For Ever %d° (%d pts) · '
-               'Tabla actualizada automáticamente el %s · Proyecto Forever 2031</p>' % (pos, pts, fecha))
+    new_sub = ('<p>Primera Nacional · Zona A · For Ever %d° (%d pts) · Proyecto Forever 2031</p>' % (pos, pts))
     if in_zone:
         new_badge = '<span class="badge">HOY: %d° — EN ZONA DE DESCENSO</span>' % pos
     else:
@@ -240,6 +241,8 @@ def main():
                      lambda m: new_badge, new, count=1)
         new = re.sub(r'<div class="kpi \w+"><div class="v">\d+°</div><div class="l">Posición[^<]*</div></div>',
                      lambda m: new_kpi, new, count=1)
+        new = re.sub(r'(<b id="lastUpdate">).*?(</b>)',
+                     lambda m: m.group(1) + stamp_val + m.group(2), new, count=1, flags=re.S)
 
         if new != html:
             with io.open(f, "w", encoding="utf-8") as fh:
